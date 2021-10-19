@@ -1,0 +1,19 @@
+title: Momba Tutorial
+author: ""
+email: koehl@cs.uni-saarland.de
+logo: images/logo_with_text.svg
+copyright: 2021, Maximilian Köhl, Saarland University
+html:
+  extra_navbar: ""
+  extra_footer: A tutorial co-located with  <a href="http://lcs.ios.ac.cn/fm2021/">FM'21</a> organized by Holger Hermanns and Maximilian Köhl.
+
+repository:
+  url: https://github.com/udsdepend/fm21-momba-tutorial
+  branch: master
+  path_to_book: book
+
+launch_buttons:
+  notebook_interface: classic
+  binderhub_url: https://mybinder.org
+  colab_url: https://colab.research.google.com
+  thebe: true

@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "fm21_momba_tutorial"
+version = "0.0.1"
+description = "A tutorial on Momba at FM21."
+authors = [
+    "Maximilian Köhl <koehl@cs.uni-saarland.de>"
+]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/koehlma/fm21-momba-tutorial"
+homepage = "https://fm21.momba.dev"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 2 - Pre-Alpha",
+    "Operating System :: OS Independent"
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+momba = { version = "^0.4.2", extras = ["engine"] }
+
+[tool.poetry.dev-dependencies]
+black = { version = "^21.5b0", allow-prereleases = true }
+flake8 = "^3.7.9"
+flake8-bugbear = "^20.1.2"
+pep8-naming = "^0.9.1"
+mypy = "^0.812"
+jupyter-book = "^0.12.0"
+
+[build-system]
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
