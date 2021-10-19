@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Momba Tutorial &#8212; Momba Tutorial</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="#" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex/" />
+    <link rel="search" title="Search" href="search/" />
+    <link rel="next" title="Getting Started" href="getting-started/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="#">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo_with_text.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Momba Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search/" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 current">
+  <a class="reference internal" href="#">
+   Momba Tutorial
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting-started/">
+   Getting Started
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/index.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preliminary-agenda">
+   Preliminary Agenda
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="momba-tutorial">
+<h1>Momba Tutorial<a class="headerlink" href="#momba-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>Dealing with quantitative models encompasses a variety of tasks which can be challenging from time to time.
+Everything starts with the <em>construction</em> of a formal model or a family thereof.
+Often a textual or other, more formal, description of the scenario to be modeled already exists, such as a rough sketch of the desired behavior or a circuit diagram.
+Then, after a formal model has finally been conceived, one has to <em>validate</em> that the model actually adequately represents what should be modeled.
+In this regard models are just like any other human artifact, inadequate initially but over time it gets better.
+Only after confidence in the model has been established, one is able to harvest the benefits by handing over the model to <em>analysis</em> tools, e.g., a model checker.</p>
+<p><a class="reference external" href="https://momba.dev">Momba</a> is a Python framework for working with quantitative models centered around the <a class="reference external" href="https://jani-spec.org">JANI model interchange format</a>.
+In this tutorial, we will guide you through the process from model construction to analysis using a concrete example inspired by the <a class="reference external" href="https://racetrack.perspicuous-computing.science/">Racetrack benchmark</a>.
+You will learn (1) how to leverage Momba’s API to programmatically turn a domain-specific scenario description (e.g., a map of a game or a circuit diagram) into a quantitative model, (2) how to validate and test such models using Momba’s explicit state space exploration engine by prototyping a tool for interactive model exploration and visualization, and (3) how to use the unified interfaces provided by Momba to invoke state-of-the-art tools for model analysis.</p>
+<p>Over the past decade, Python has gained popularity especially in academia where the requirements for reproducibility are high.
+Hence, in this tutorial, you will also learn how to use Python and set up a project in a way enabling collaboration and easy packaging of reproducible artifacts.</p>
+<p>We plan to run the tutorial as an interactive online event interleaving talks with hands-on sessions.
+We will provide you with material on how to prepare your computer for the tutorial upfront.</p>
+<p>The hands-on experience will be based on the example of a jump’n’run game where a player has to move from left to right at a constant speed while avoiding obstacles by moving up or down.
+The actions of the player are subject to probabilistic noise, i.e., not every action has an effect and the player may continue moving straight instead of moving up or down.
+You will construct a formal model based on a map of the game, write an interactive simulation and visualization based on the model using Momba’s explicit state space exploration engine, and analyze the model with <a class="reference external" href="https://modestchecker.org">The Modest Toolset</a> and <a class="reference external" href="https://www.stormchecker.org/">Storm</a>.
+We provide you with a project skeleton for the example.</p>
+<div class="section" id="preliminary-agenda">
+<h2>Preliminary Agenda<a class="headerlink" href="#preliminary-agenda" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><strong>9:00–09:45</strong>: The tutorial starts with a talk introducing quantitative modelling with Momba where we aim to answer the following questions:</p>
+<ul class="simple">
+<li><p>What are <em>quantitative models</em>?</p></li>
+<li><p>What is the JANI model interchange format?</p></li>
+<li><p>What features does Momba offer for quantitative modeling?</p></li>
+<li><p>What use cases is Momba suited for?</p></li>
+</ul>
+<p>We will demonstrate the core features of Momba using the Racetrack benchmark and give a glimpse on the APIs Momba provides for model construction, exploration, and analysis.
+We then introduce the example the tutorial will be based upon.
+The idea is that you go through the whole process from model construction to analysis using this example.
+We show what you can expect and what the final result will look like.</p>
+</li>
+<li><p><strong>09:45–10:00</strong>: A short interactive talk explaining the project setup and which tools we recommend using for working with Python in an academic setting.
+This talk covers best practices for reproducibility and collaboration concerning the usage of Python within the academic community.
+You can ask questions and we make sure that everyone has a working setup for the remainder of the tutorial.</p></li>
+<li><p><strong>10:00–10:30</strong>: Coffee Break</p></li>
+<li><p><strong>10:30–11:25</strong>: Hands-on session on model construction.
+We demonstrate how to construct an automaton using Momba and then task you with the construction of a formal model for the example.</p></li>
+<li><p><strong>11:25–12:00</strong>: Hands-on session on model exploration.
+We demonstrate how to use Momba’s explicit state space exploration engine and then task you with building a tool for interactive model exploration and visualization which allows playing the game on the console.</p></li>
+<li><p><strong>12:00–12:30</strong>: Hands-on session on model analysis.
+You will take their model and analyze it using the state-of-the-art tools The Modest Toolset and Storm vie the APIs Momba provides.</p></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "udsdepend/fm21-momba-tutorial",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+     <div id="next">
+        <a class="right-next" href="getting-started/" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Getting Started</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+            &copy; Copyright 2021, Maximilian Köhl, Saarland University.<br/>
+          <div class="extra_footer">
+            A tutorial co-located with  <a href="http://lcs.ios.ac.cn/fm2021/">FM'21</a> organized by Holger Hermanns and Maximilian Köhl.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
