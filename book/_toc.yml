@@ -4,4 +4,5 @@ parts:
 - caption: Tutorial
   chapters:
   - file: tutorial/overview
+  - file: tutorial/preparation
   - file: tutorial/getting-started

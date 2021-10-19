@@ -2,7 +2,7 @@ name: Book
 
 on:
   push:
-    branches: [ master ]
+    branches: [ book ]
 
   workflow_dispatch:
 
