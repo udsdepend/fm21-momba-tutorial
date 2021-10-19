@@ -1,4 +1,7 @@
 format: jb-book
 root: index
-chapters:
-- file: getting-started
+parts:
+- caption: Tutorial
+  chapters:
+  - file: tutorial/overview
+  - file: tutorial/getting-started

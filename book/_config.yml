@@ -1,11 +1,16 @@
-title: Momba Tutorial
+title: "FM'21: Momba Tutorial"
 author: ""
 email: koehl@cs.uni-saarland.de
 logo: images/logo_with_text.svg
 copyright: 2021, Maximilian Köhl, Saarland University
 html:
+  home_page_in_navbar: false
   extra_navbar: ""
-  extra_footer: A tutorial co-located with  <a href="http://lcs.ios.ac.cn/fm2021/">FM'21</a> organized by Holger Hermanns and Maximilian Köhl.
+  extra_footer: |
+    A tutorial co-located with <a href="http://lcs.ios.ac.cn/fm2021/">FM'21</a> organized by Holger Hermanns and Maximilian Köhl.
+    <br>
+    <a href="https://www.uni-saarland.de/impressum.html">Imprint</a>
+    | Hosted by <a href="https://github.com">GitHub</a> – <a href="https://docs.github.com/en/github/site-policy/github-privacy-statement#github-pages">Privacy Policy</a>.
 
 repository:
   url: https://github.com/udsdepend/fm21-momba-tutorial
