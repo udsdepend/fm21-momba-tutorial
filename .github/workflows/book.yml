@@ -19,7 +19,7 @@ jobs:
       - name: Install Poetry
         run: |
           python -m pip install poetry
-      - name: Export Requirements
+      - name: Install Requirements
         run: |
           poetry export --without-hashes --extras all --dev -f requirements.txt --output dev-requirements.txt
           pip install -r dev-requirements.txt
@@ -30,7 +30,7 @@ jobs:
         run: |
           echo "fm21.momba.dev" > book/_build/dirhtml/CNAME
       - name: Deploy Book
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/book'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
