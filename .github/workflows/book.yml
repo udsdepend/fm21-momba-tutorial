@@ -21,7 +21,7 @@ jobs:
       - name: Export Requirements
         run: |
           poetry export --without-hashes --extras all --dev -f requirements.txt --output dev-requirements.txt
-          pip install -r artifacts/dev-requirements.txt
+          pip install -r dev-requirements.txt
       - name: Build Book
         run: |
           jupyter-book build book/ --builder=dirhtml
