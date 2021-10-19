@@ -26,6 +26,9 @@ jobs:
       - name: Build Book
         run: |
           jupyter-book build book/ --builder=dirhtml
+      - name: Create CNAME file
+        run: |
+          echo "fm21.momba.dev" > book/_build/dirhtml/CNAME
       - name: Deploy Book
         if: github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
