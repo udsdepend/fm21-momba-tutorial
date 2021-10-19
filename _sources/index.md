@@ -1,4 +1,4 @@
-# Momba Tutorial
+# Momba: Python for Quantitative Models
 
 Dealing with quantitative models encompasses a variety of tasks which can be challenging from time to time.
 Everything starts with the *construction* of a formal model or a family thereof.
