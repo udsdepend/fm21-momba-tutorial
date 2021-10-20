@@ -1,4 +1,6 @@
-# Dependency Management
+# Reproducibility
+
+## Dependency Management
 
 In academia, *reproducibility* of research is key.
 An important aspect of ensuring reproducibility is to precisely capture the dependencies used by a piece of software.
