@@ -1,53 +1,42 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
-
 # Getting Started
 
+To get started, you first have to obtain the material for the tutorial.
 
-
-
-### During the Tutorial
-
-1. If you have [Git](https://git-scm.com/) installed, clone the material for the tutorial:
-    ```
-    git clone https://github.com/udsdepend/fm21-momba-tutorial.git
-    ```
-    Otherwise, you can also [download the material as a ZIP file](https://github.com/udsdepend/fm21-momba-tutorial/archive/refs/heads/master.zip).
+If you have [Git](https://git-scm.com) installed, clone the material with:
+```
+git clone https://github.com/udsdepend/fm21-momba-tutorial.git
+```
+Otherwise, you can also [download the material as a ZIP file](https://github.com/udsdepend/fm21-momba-tutorial/archive/refs/heads/master.zip).
 
 After cloning the material or extracting the ZIP file, you find a file `workspace.code-workspace` in the cloned or extracted folder.
-This file defines a VS Code *workspace*.
+This file defines a [VS Code *workspace*](https://code.visualstudio.com/docs/editor/workspaces).
 To open the workspace run:
 ```
 code workspace.code-workspace
 ```
-Alternatively, you can also open the workspace from the UI: To this end, open the *command palette* by pressing `F1`, type *File: Open Workspace from File*, and hit enter:
-```{image} ./images/workspace-from-file.png
-:name: workspace-from-file
+Alternatively, you can also open the workspace from within VS Code: To this end, open the *command palette* by pressing `F1`, type *File: Open Workspace from File*, and hit the enter key:
+
+```{image} ./images/vscode-open-workspace.png
+:name: vscode-open-workspace
 :align: center
 ```
 
 Then, choose the `workspace.code-workspace` file to open the workspace.
 
+After opening the workspace, VS Code should ask you whether you want to install the *recommended extensions*:
 
-This folders should contain a file `pyproject.toml`.
-Please make sure to open the right folder as otherwise the following steps won't work.
-
-
-
-
-```{code-cell} ipython3
-from momba import model
-
-ctx = model.Context(model.ModelType.MDP)
-
-print(ctx)
+```{image} ./images/vscode-install-extensions.png
+:name: vscode-open-workspace
+:align: center
 ```
+
+The workspace comes with four recommended extensions for spell checking, Python support, and [TOML](https://toml.io/en/) support.
+TOML is the file format used to configure a Python project.
+More about that later.
+
+Should VS Code not ask you to install the recommended extensions, you probably have them installed already.
+To view the recommended extensions of the workspace and check whether they are installed, open the command palette by pressing `F1` and then choose *Extensions: Show Recommended Extensions*.
+
+The workspace also contains settings for the project.
+
+Congratulations, you are now fully prepared for the tutorial. 🎉

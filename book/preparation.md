@@ -1,7 +1,7 @@
-# Preparation
+# Prepare Your System
 
 This page will guide you through the process of setting up your system such that you can follow the tutorial.
-You have to install [Python](https://www.python.org/), [Poetry](https://python-poetry.org/), [Docker](https://docker.io), and [VS Code](https://code.visualstudio.com) in order to be able to follow the tutorial.
+To follow along, you have to install [Python](https://www.python.org/), [Poetry](https://python-poetry.org/), [Docker](https://docker.io), and [VS Code](https://code.visualstudio.com).
 These steps have been successfully tested on Windows 10 and Ubuntu 20.04, however, they should analogously also apply to your favorite Linux distribution or macOS.
 If you want, you can also use the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) (WSL).
 When using WSL you have to install Python and Poetry inside of WSL (we recommend using Ubuntu 20.04 LTS as the distribution so you can follow the steps for Ubuntu).
@@ -13,6 +13,8 @@ While you may be able to participate with another IDE or editor, having the feat
 
 **We kindly ask you to follow these steps upfront in preparation of the tutorial.**
 
+In case you have any questions, join our <a href="https://gitter.im/koehlma/momba?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/koehlma/momba.svg"></a> or send us an email.
+
 
 ## Ubuntu
 
@@ -20,7 +22,7 @@ While you may be able to participate with another IDE or editor, having the feat
     ```
     sudo add-apt-repository -y ppa:deadsnakes/ppa
     sudo apt-get update -y
-    sudo apt-get install -y python3.9 python3.9-venv
+    sudo apt-get install -y python3.9 python3.9-dev python3.9-venv
     ```
     Note that Momba requires at least Python version 3.8. Older versions will **not** work.
 2. We will be using [Poetry](https://python-poetry.org/) for dependency management.
@@ -65,7 +67,7 @@ While you may be able to participate with another IDE or editor, having the feat
 
 # Windows
 
-1. We recommend installing **Python 3.9** using the [official installer](https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe):
+1. We recommend **installing Python 3.9** using the [official installer](https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe):
     On the first page of the installer, choose *Customize installation*.
     When presented with the *Optional Features* just hit *Next* without changing anything.
     In the next step, the *Advanced Options* will show up.
@@ -74,17 +76,21 @@ While you may be able to participate with another IDE or editor, having the feat
     :name: windows-python-advanced-options
     :align: center
     ```
-    On the final page of the installer select *Disable path length limit* and then *Close* the installer.
+    On the final page of the installer, select *Disable path length limit* and then *Close* the installer.
 
     In case Python is already installed on your system, we trust that you know how to adapt the following steps to work with the existing installation.
     If you are in doubt, you may want to remove the existing installation and reinstall it as described here.
     This ensures that everything works as expected.
 2. We will be using [Poetry](https://python-poetry.org/) for dependency management.
-    Assuming you have installed Python 3.9 open a PowerShell as administrator.
+    Assuming you have installed Python 3.9, open a PowerShell as administrator.
     Right click on the start menu and select *Windows PowerShell (Admin)*.
     Then run:
     ```
     pip install poetry
+    ```
+    Please **check that Poetry works** with:
+    ```
+    poetry --version
     ```
 3. To install Docker, use the [Docker Desktop](https://www.docker.com/products/docker-desktop) installer without changing any settings.
     

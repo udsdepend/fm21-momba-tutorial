@@ -1,8 +1,27 @@
 format: jb-book
 root: index
 parts:
+- chapters:
+  - file: preparation
 - caption: Tutorial
+  numbered: True
   chapters:
-  - file: tutorial/overview
-  - file: tutorial/preparation
   - file: tutorial/getting-started
+  - file: tutorial/best-practices
+    sections:
+    - file: tutorial/dependency-management
+    - file: tutorial/vscode-workspaces
+    - file: tutorial/code-style
+  - file: tutorial/running-example
+  - file: tutorial/model-creation
+    sections:
+    - file: tutorial/modeling-with-momba
+    - file: tutorial/model-the-game
+    - file: tutorial/reference-model
+  - file: tutorial/model-validation
+    sections:
+    - file: tutorial/state-space-exploration
+    - file: tutorial/interactive-game
+    - file: tutorial/reference-game
+  - file: tutorial/model-analysis
+  - file: tutorial/takeaways
