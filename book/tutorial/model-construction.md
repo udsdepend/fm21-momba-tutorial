@@ -1,4 +1,4 @@
-# Model Creation
+# Model Construction
 
 TODO: Explain how the model is created.
 
