@@ -50,7 +50,7 @@ In our case there is just one:
 ```json
 "folders": [
     {
-        "name": "Momba Tutorial",
+        "name": "FM Racer",
         "path": "."
     }
 ],
