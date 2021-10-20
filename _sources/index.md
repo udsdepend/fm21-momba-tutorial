@@ -44,7 +44,7 @@ The tutorial takes place on **November, 20th** during sessions 1 through 2 ([**1
 
       We will walk you through the provided project skeleton.
       You will learn how to manage dependencies in a way that enables reproducibility, prevents version conflicts, and makes collaboration easy.
-      We will demonstrate how to use VS Code workspaces to unify the development environment across a project and how to use tools such as auto formatters and linters to ensure a consistent code style.
+      We will demonstrate how to use tools such as auto formatters and linters to ensure a consistent code style and how to use VS Code workspaces to unify the development environment across a project.
   - [*Running Example*](tutorial/running-example): We introduce the example you will be working with in more detail.
   - [*Model Construction*](tutorial/model-construction):
       We introduce the theory behind Momba and the [JANI model format](https://jani-spec.org).
