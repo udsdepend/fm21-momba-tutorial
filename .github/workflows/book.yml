@@ -22,8 +22,7 @@ jobs:
       - name: Install Requirements
         run: |
           poetry export --without-hashes --extras all --dev -f requirements.txt --output dev-requirements.txt
-          pip install -r dev-requirements.txt
-          pip install 
+          pip install -r dev-requirements.txt --force-reinstall
       - name: Print Version
         run: |
           jupyter-book --version
