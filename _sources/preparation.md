@@ -65,7 +65,7 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
     Note that this will automatically add an APT repository for future automatic updates.
 
 
-# Windows
+## Windows
 
 1. We recommend **installing Python 3.9** using the [official installer](https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe):
     On the first page of the installer, choose *Customize installation*.
