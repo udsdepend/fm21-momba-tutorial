@@ -22,7 +22,7 @@ With [Black](https://github.com/psf/black) the [Python Software Foundation](http
 With [Flake8](https://flake8.pycqa.org/en/latest/) a linter is available which will help you catch bugs and in general produce higher quality code following the official [PEP 8 – Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/).
 Like you would not write a paper without a spell checker, you should not write Python programs without using those (or similar) tools.
 
-Since [version 3.5](https://docs.python.org/3.5/whatsnew/3.5.html#whatsnew-pep-484), Python official supports *gradual static typing*.
+Since [version 3.5](https://docs.python.org/3.5/whatsnew/3.5.html#whatsnew-pep-484), Python officially supports *gradual static typing*.
 Despite being optional, using static types can reduce bugs in your code and also serve as a documentation of interfaces.
 There are, however, some tradeoffs to static types and they may not be suited for all use cases as they only work for a subset of Python.
 Momba is almost fully statically typed.

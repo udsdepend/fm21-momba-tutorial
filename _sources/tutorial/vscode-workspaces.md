@@ -27,8 +27,9 @@ The workspace we are using comes with the following settings:
 This enables linting with Flake8, type checking with MyPy, and automatically formats files with Black when they are saved.
 It also displays a vertical line in column 99 in the editor indicating the maximal acceptable line length.
 For some, this may be annoying at first.
-However, experience shows that when one follows *community standards* for a consistent code style and quality, this helps others to understand and read code much more easily.
-Especially in academia, where we take pride in high publication standards this should be a priority.
+However, it really helps ensuring a consistent code style and quality across a project.
+As argued before, this should be a priority, especially in academia.
+After a while, you will adapt to the enforced rules and they will become second nature to you.
 
 In case of our example project, the recommended extensions are defined by:
 
