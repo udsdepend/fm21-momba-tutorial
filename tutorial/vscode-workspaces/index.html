@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2.2. VS Code Workspaces &#8212; FM&#39;21: Tutorial</title>
+    <title>2.3. VS Code Workspaces &#8212; FM&#39;21: Tutorial</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="2.3. Consistent Code Style" href="../code-style/" />
-    <link rel="prev" title="2.1. Dependency Management" href="../dependency-management/" />
+    <link rel="next" title="3. Running Example" href="../running-example/" />
+    <link rel="prev" title="2.2. Consistent Code Style" href="../code-style/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -119,14 +119,14 @@
      2.1. Dependency Management
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     2.2. VS Code Workspaces
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../code-style/">
-     2.3. Consistent Code Style
+     2.2. Consistent Code Style
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.3. VS Code Workspaces
     </a>
    </li>
   </ul>
@@ -271,9 +271,57 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="vs-code-workspaces">
-<h1><span class="section-number">2.2. </span>VS Code Workspaces<a class="headerlink" href="#vs-code-workspaces" title="Permalink to this headline">¶</a></h1>
-<p>Define settings and extensions needed for development.</p>
-<p>TODO: Explain how this is done for our example and what we have configured there.</p>
+<h1><span class="section-number">2.3. </span>VS Code Workspaces<a class="headerlink" href="#vs-code-workspaces" title="Permalink to this headline">¶</a></h1>
+<p>Of course, everyone has their own beloved editor of choice.
+Nevertheless, when working on a project together it might make sense to at least provide some instructions on how to properly configure a common editor for the project.
+Especially when one wants to enforce a certain code style and quality.
+For instance, VS Code can be configured to invoke the previously discussed tools such as linters, type checkers, and auto formatters to ensure a consistent code style and quality across a project with ease.</p>
+<p>With VS Code workspaces, configuring VS Code for a project is straightforward.
+The <code class="docutils literal notranslate"><span class="pre">.code-workspace</span></code> file of the workspace can contain settings as well as recommended extensions.
+This makes bringing new developers up to speed a breeze because it suffices to simply open the workspace and install the necessary extensions as you did before.
+The workspace we are using comes with the following settings:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;python.linting.flake8Enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;python.linting.mypyEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;python.formatting.provider&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;[python]&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;editor.rulers&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="mi">99</span>
+        <span class="p">],</span>
+        <span class="nt">&quot;editor.formatOnSave&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>This enables linting with Flake8, type checking with MyPy, and automatically formats files with Black when they are saved.
+It also displays a vertical line in column 99 in the editor indicating the maximal acceptable line length.
+For some, this may be annoying at first.
+However, experience shows that when one follows <em>community standards</em> for a consistent code style and quality, this helps others to understand and read code much more easily.
+Especially in academia, where we take pride in high publication standards this should be a priority.</p>
+<p>In case of our example project, the recommended extensions are defined by:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;extensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;recommendations&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;bungcip.better-toml&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ms-python.vscode-pylance&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ms-python.python&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;streetsidesoftware.code-spell-checker&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Within a workspace there can also be multiple <em>folders</em>.
+In our case there is just one:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;folders&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Momba Tutorial&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span>
+    <span class="p">}</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+<p>So, now you know how VS Code workspaces work and how you might use them to ensure consistency across a project and to bring new developers up to speed quickly.
+When we will begin working with actual source code, you also know why VS Code may suddenly reformat your code or throw various warning towards you.
+In case this annoys you, you now also know how to turn it off. 😉</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -306,19 +354,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../dependency-management/" title="previous page">
+        <a class="left-prev" href="../code-style/" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">2.1. </span>Dependency Management</p>
+                <p class="prevnext-title"><span class="section-number">2.2. </span>Consistent Code Style</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../code-style/" title="next page">
+        <a class="right-next" href="../running-example/" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">2.3. </span>Consistent Code Style</p>
+                <p class="prevnext-title"><span class="section-number">3. </span>Running Example</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

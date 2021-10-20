@@ -57,7 +57,7 @@ The tutorial takes place on **November, 20th** during sessions 1 through 2 ([**1
   - [*Model Validation*](tutorial/model-validation): **How to *validate* a formal model with Momba?**
 
       We walk you through the state space exploration API provided by Momba.
-      You will programm an interactive visualization for your model.
+      You will program an interactive visualization for your model.
   - [*Model Analysis*](tutorial/model-analysis): **How to *analyze* a formal model with Momba?**
 
       We will briefly introduce quantitative model checking.
