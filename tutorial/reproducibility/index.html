@@ -268,28 +268,23 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dependency-management">
-   2.1.1. Dependency Management
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pyproject-toml">
-   2.1.2.
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pyproject.toml
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#managing-dependencies">
-   2.1.3. Managing Dependencies
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#virtual-environments">
-   2.1.4. Virtual Environments
+   2.1.1. Virtual Environments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dependency-management">
+   2.1.2. Dependency Management
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#project-information">
+   2.1.3. Project Information
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#development-dependencies">
+   2.1.4. Development Dependencies
   </a>
  </li>
 </ul>
@@ -305,26 +300,87 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="reproducibility">
 <h1><span class="section-number">2.1. </span>Reproducibility<a class="headerlink" href="#reproducibility" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="dependency-management">
-<h2><span class="section-number">2.1.1. </span>Dependency Management<a class="headerlink" href="#dependency-management" title="Permalink to this headline">¶</a></h2>
-<p>In academia, <em>reproducibility</em> of research is key.
-An important aspect of ensuring reproducibility is to precisely capture the dependencies used by a piece of software.</p>
-<p>Using a system like <a class="reference external" href="https://python-poetry.org/">Poetry</a> for dependency management has many advantages:</p>
-<ul class="simple">
-<li><p>The dependencies of your projects are decoupled and installed into a <em>virtual environment</em> on a per-project basis.
-This prevents version conflicts between multiple projects.</p></li>
-<li><p>The dependencies of your projects are precisely tracked and you can be sure that everyone in your team has the exact same versions installed reducing <em>but it works on my machine</em> moments.</p></li>
-<li><p>To ensure reproducibility, you have to track the dependencies anyway.
-Doing so in a well-specified format with tool support makes reproducing your experiments a breeze.</p></li>
-<li><p>Your software is already in a format suitable for distribution through package managers.
-In the case of Python, this is <a class="reference external" href="https://pypi.org/project/pip/">Pip</a> and the <a class="reference external" href="https://pypi.org">Python Package Index</a>.</p></li>
-</ul>
-<p><a class="reference external" href="https://www.python.org/dev/peps/pep-0518/">PEP 518</a> partially specifies the format of the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.
-This file defines how your project is going to be build and what dependencies in which versions are required.</p>
+<p>Developing software in an academia setting comes with its own set of challenges.
+Most prominently, experiments conducted and presented in papers should be <em>reproducible</em> by other researchers.
+This is also the reason why most conferences strongly encourage the submission of artifacts with papers.</p>
+<p>Setting up a Python project with reproducibility in mind will make your life much easier down the road when it comes to submitting artifacts or onboarding new developers.
+For our example project, we are using <a class="reference external" href="https://python-poetry.org/">Poetry</a> to manage the project in an way such that reproducibility becomes effortless.</p>
+<div class="section" id="virtual-environments">
+<h2><span class="section-number">2.1.1. </span>Virtual Environments<a class="headerlink" href="#virtual-environments" title="Permalink to this headline">¶</a></h2>
+<p>A key to reproducibility is to clearly define an execution environment and prevent user and system-specific circumstances from creeping into it.
+The execution environment has to be mostly isolated from the existing system of the user.
+With <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual environments</a>, Python has such isolation builtin.
+Poetry will manage a virtual environment for you project.
+To <strong>set up a virtual environment for the example project</strong>, run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry install
+</pre></div>
 </div>
-<div class="section" id="pyproject-toml">
-<h2><span class="section-number">2.1.2. </span><code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code><a class="headerlink" href="#pyproject-toml" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> contains information about your project like its <em>name</em>, a short <em>description</em>, and a list of <em>authors</em>:</p>
+<p>in the project folder.
+This command will create a new directory <code class="docutils literal notranslate"><span class="pre">.venv</span></code> containing the virtual environment.
+That is, a copy of the Python interpreter and all tools and dependencies necessary for the project.</p>
+<p>Assuming you have opened the project workspace (see <a class="reference internal" href="../getting-started/"><span class="doc std std-doc"><em>Getting Started</em></span></a> for instructions on how to do that), you activate the virtual environment in VS Code as follows:
+Press <code class="docutils literal notranslate"><span class="pre">F1</span></code> to open the command palette and choose <em>Python: Select Interpreter</em>.
+Then choose <em>Entire Workspace</em>.
+You can now select the recommended interpreter:</p>
+<img alt="../../_images/vscode-select-interpreter.png" class="align-center" id="vscode-select-interpreter" src="../../_images/vscode-select-interpreter.png" />
+<p>VS Code may also prompt you by itself when it recognizes that a virtual environment has been created.</p>
+<p>So, how do you manage this virtual environment with Poetry?</p>
+</div>
+<div class="section" id="dependency-management">
+<h2><span class="section-number">2.1.2. </span>Dependency Management<a class="headerlink" href="#dependency-management" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.python.org/dev/peps/pep-0518/">PEP 518</a> partially specifies the format of a <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.
+This file defines how your project is going to be build and what dependencies in which versions are required.</p>
+<p>The dependencies are specified in the <code class="docutils literal notranslate"><span class="pre">tool.poetry.dependencies</span></code> section.
+For our example:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.dependencies]</span>
+<span class="c1"># required Python version</span>
+<span class="n">python</span> <span class="o">=</span> <span class="s">&quot;^3.8&quot;</span>
+</pre></div>
+</div>
+<p>Currently, this specifies that a Python version of at least 3.8 but less than 4.0 is needed which is indicated by the caret <code class="docutils literal notranslate"><span class="pre">^</span></code>.
+The version 4.0 might include backwards incompatibilities, hence, the version should be less than 4.0.
+Also, we are using features introduced with Python 3.8, so, the version should be at least 3.8.</p>
+<p>As you may have noticed, Momba is not yet a dependency of the project.
+To <strong>add Momba as a dependency</strong> run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add -E engine -E docker momba
+</pre></div>
+</div>
+<p>Running this command will add Momba as a dependency to the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">momba</span> <span class="o">=</span> <span class="p">{</span><span class="n">version</span> <span class="o">=</span> <span class="s">&quot;^0.4.2&quot;</span><span class="p">,</span> <span class="n">extras</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;engine&quot;</span><span class="p">,</span> <span class="s">&quot;docker&quot;</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-E</span></code> flag enables optional <em>extras</em> for the package to be installed.
+The <code class="docutils literal notranslate"><span class="pre">engine</span></code> extra of Momba contains the state space exploration engine we will be using for the interactive model visualization.
+The <code class="docutils literal notranslate"><span class="pre">docker</span></code> extra of Momba enables support for running Storm through Docker.</p>
+<p>Again, the caret <code class="docutils literal notranslate"><span class="pre">^</span></code> in <code class="docutils literal notranslate"><span class="pre">^0.4.2</span></code> specifies that we want a version of Momba that is at least <code class="docutils literal notranslate"><span class="pre">0.4.2</span></code> but less than <code class="docutils literal notranslate"><span class="pre">0.5.0</span></code>.
+Introducing breaking changes requires increasing the minor version (i.e., <code class="docutils literal notranslate"><span class="pre">4</span></code> to <code class="docutils literal notranslate"><span class="pre">5</span></code> in this case) when the version number starts with <code class="docutils literal notranslate"><span class="pre">0</span></code> as is the case here.
+This kind of guaranteeing compatibility between versions is known as <a class="reference external" href="https://semver.org/"><em>semantic versioning</em></a>.
+Note that <em>experimental features</em> are often excluded from semantic versioning and sometimes compatibility is broken by accident without changing the version number accordingly.
+For these cases, it might make sense to explicitly <em>pin</em> a precise version with <code class="docutils literal notranslate"><span class="pre">==</span></code> like so:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">momba</span> <span class="o">=</span> <span class="p">{</span><span class="n">version</span> <span class="o">=</span> <span class="s">&quot;==0.4.2&quot;</span><span class="p">,</span> <span class="n">extras</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;engine&quot;</span><span class="p">,</span> <span class="s">&quot;docker&quot;</span><span class="p">]}</span> 
+</pre></div>
+</div>
+<p>Adding a dependency with <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">add</span></code> also modifies the <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> file.
+This file keeps track of the precise versions needed for reproducibility and development.
+Running <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> will not install just any versions compatible with the specification in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> but instead <em>the precise versions locked</em> in <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code>.
+In case you make any manual changes to the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">poetry</span> <span class="n">lock</span>
+</pre></div>
+</div>
+<p>to synchronize them into the <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> file.
+The <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> file even contains cryptographic hashes for all dependencies including transitive ones such that any problems with mismatching packages will become apparent when creating the virtual environment with <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code>.
+When using a version control system, you should commit the <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> file alongside the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.
+That way, all collaborators an a project will have precisely the same dependencies in the exact same versions installed.</p>
+<p>This mechanism of <em>locking dependencies</em> ensures that everyone trying to reproduce your experiments gets the exact same versions you used for running the experiments.
+By installing the dependencies with <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> into a virtual environment, interferences with the system of the user are minimized.
+Also, onboarding new developers becomes very easy because it usually suffices to run <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">install</span></code> to get a working development environment.
+In short, using a tool like Poetry makes reproducibility effortless.</p>
+</div>
+<div class="section" id="project-information">
+<h2><span class="section-number">2.1.3. </span>Project Information<a class="headerlink" href="#project-information" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the dependencies, the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file also contains additional metadata about your project.
+For instance, its <em>name</em>, a short <em>description</em>, or a list of <em>authors</em>.
+For the example:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry]</span>
 <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;fmracer&quot;</span>
 <span class="n">version</span> <span class="o">=</span> <span class="s">&quot;0.0.1&quot;</span>
@@ -343,12 +399,16 @@ This file defines how your project is going to be build and what dependencies in
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>Furthermore, it contains a list of dependencies:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.dependencies]</span>
-<span class="c1"># required Python version</span>
-<span class="n">python</span> <span class="o">=</span> <span class="s">&quot;^3.8&quot;</span>
-
-<span class="k">[tool.poetry.dev-dependencies]</span>
+<p>This information makes your project compatible with the wider Python ecosystem.
+In particular, your project is in a format suitable for distribution through <a class="reference external" href="https://pypi.org/project/pip/">Pip</a> and the <a class="reference external" href="https://pypi.org">Python Package Index</a>.
+This allows others to use your project by adding it to their project with <code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">add</span></code> just like you did with Momba.</p>
+</div>
+<div class="section" id="development-dependencies">
+<h2><span class="section-number">2.1.4. </span>Development Dependencies<a class="headerlink" href="#development-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the normal dependencies we have specified, <em>development dependencies</em> can also be specified in the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.
+This is useful for tools that are not required to <em>use</em> your project but to <em>contribute</em> to it.
+In case of our example project there are five development dependencies:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.dev-dependencies]</span>
 <span class="n">black</span> <span class="o">=</span> <span class="p">{</span> <span class="n">version</span> <span class="o">=</span> <span class="s">&quot;^21.9b0&quot;</span><span class="p">,</span> <span class="n">allow-prereleases</span> <span class="o">=</span> <span class="n">true</span> <span class="p">}</span>
 <span class="n">flake8</span> <span class="o">=</span> <span class="s">&quot;^3.7.9&quot;</span>
 <span class="n">flake8-bugbear</span> <span class="o">=</span> <span class="s">&quot;^20.1.2&quot;</span>
@@ -356,59 +416,9 @@ This file defines how your project is going to be build and what dependencies in
 <span class="n">mypy</span> <span class="o">=</span> <span class="s">&quot;^0.812&quot;</span>
 </pre></div>
 </div>
-<p>This also specifies which versions of Python are supported.
-In this case, <code class="docutils literal notranslate"><span class="pre">^3.8</span></code> says that all Python versions greater or equal to <code class="docutils literal notranslate"><span class="pre">3.8</span></code> and less than <code class="docutils literal notranslate"><span class="pre">4.0</span></code> are supported.
-This is very useful in case you are using features of Python only found in newer versions and you want to communicate this to users of your tool or package.
-From a reproducibility perspective it prevents someone from running your project with a wrong version of Python leading to all kinds of non-obvious errors.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">dev-dependencies</span></code> are dependencies which are not required for using your tool or package but for development.
-In this case, we have <code class="docutils literal notranslate"><span class="pre">black</span></code>, an auto formatter, <code class="docutils literal notranslate"><span class="pre">flake8</span></code> and some related packages for linting, and <code class="docutils literal notranslate"><span class="pre">mypy</span></code>, a type checker.</p>
-</div>
-<div class="section" id="managing-dependencies">
-<h2><span class="section-number">2.1.3. </span>Managing Dependencies<a class="headerlink" href="#managing-dependencies" title="Permalink to this headline">¶</a></h2>
-<p>As you may have noticed, Momba is not yet a dependency of your project.
-To add Momba as a dependency we use <code class="docutils literal notranslate"><span class="pre">poetry</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add -E engine -E docker momba
-</pre></div>
-</div>
-<p>This commands adds Momba as a dependency to your project.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">-E</span></code> flag enables optional <em>features</em> for the package to be installed.
-The <code class="docutils literal notranslate"><span class="pre">engine</span></code> feature of Momba contains the state space exploration engine we will be using for the interactive game.
-The <code class="docutils literal notranslate"><span class="pre">docker</span></code> feature of Momba enables support for running Storm through Docker.</p>
-<p>Running this command will add Momba as a dependency in the <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> section of <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">momba</span> <span class="o">=</span> <span class="p">{</span><span class="n">version</span> <span class="o">=</span> <span class="s">&quot;^0.4.2&quot;</span><span class="p">,</span> <span class="n">extras</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;engine&quot;</span><span class="p">,</span> <span class="s">&quot;docker&quot;</span><span class="p">]}</span>
-</pre></div>
-</div>
-<p>The caret <code class="docutils literal notranslate"><span class="pre">^</span></code> tells Poetry that we want a version of Momba that is at least <code class="docutils literal notranslate"><span class="pre">0.4.2</span></code> but less than <code class="docutils literal notranslate"><span class="pre">0.5.0</span></code>.
-This is used for <a class="reference external" href="https://semver.org/">semantic versioning</a>.
-Introducing breaking changes requires increasing the major version.
-Hence, it documents a minimal and a maximal version.
-Again, specifying a version like that enables reproducibility.</p>
-<p>In addition to adding Momba to the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> the command also updated the <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> file.
-This file contains precise versions of each dependency including transitive dependencies that should be used for development and reproducing results.
-It even contains cryptographic hashes of the respective dependencies to further ensure reproducibility, or, at least make it obvious, when the required file has been modified or is not available.</p>
-<p>In case you are using experimental features of a dependency which are not subject to semantic versioning, it can make sense to also <em>pin</em> the version of a dependency like so:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">momba</span> <span class="o">=</span> <span class="p">{</span><span class="n">version</span> <span class="o">=</span> <span class="s">&quot;==0.4.2&quot;</span><span class="p">,</span> <span class="n">extras</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;engine&quot;</span><span class="p">,</span> <span class="s">&quot;docker&quot;</span><span class="p">]}</span> 
-</pre></div>
-</div>
-<p>In case you make any manual changes to the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file run</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">poetry</span> <span class="n">lock</span>
-</pre></div>
-</div>
-<p>to synchronize them into the <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> file.</p>
-<p>When using a version control system, you would commit the <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> file alongside the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.
-That way, all collaborators an a project will have precisely the same dependencies in the exact versions installed.</p>
-</div>
-<div class="section" id="virtual-environments">
-<h2><span class="section-number">2.1.4. </span>Virtual Environments<a class="headerlink" href="#virtual-environments" title="Permalink to this headline">¶</a></h2>
-<p>To install a virtual environment containing all the dependencies run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry install
-</pre></div>
-</div>
-<p>This will create a directory <code class="docutils literal notranslate"><span class="pre">.venv</span></code> containing a copy of your local Python interpreter and an installation of all and only the specified dependencies.
-For reproducibility, the precise versions are taken from the <code class="docutils literal notranslate"><span class="pre">poetry.lock</span></code> file.</p>
-<p>In case you are using VS Code, press <code class="docutils literal notranslate"><span class="pre">F1</span></code> to open the command palette and choose <em>Python: Select Interpreter</em>.
-Then choose <em>Entire Workspace</em>.
-You can now select the recommended interpreter from the virtual environment.</p>
+<p>These are the auto formatter <a class="reference external" href="https://github.com/psf/black">Black</a>, the linter <a class="reference external" href="https://flake8.pycqa.org/en/latest/">Flake8</a> with some plugins, and the type checker <a class="reference external" href="http://mypy-lang.org/">MyPy</a>.
+These tools are used to ensure a consistent code style and quality.
+More on that in the next section.</p>
 </div>
 </div>
 

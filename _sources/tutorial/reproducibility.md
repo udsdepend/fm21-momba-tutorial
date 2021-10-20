@@ -1,28 +1,105 @@
 # Reproducibility
 
+Developing software in an academia setting comes with its own set of challenges.
+Most prominently, experiments conducted and presented in papers should be *reproducible* by other researchers.
+This is also the reason why most conferences strongly encourage the submission of artifacts with papers.
+
+Setting up a Python project with reproducibility in mind will make your life much easier down the road when it comes to submitting artifacts or onboarding new developers.
+For our example project, we are using [Poetry](https://python-poetry.org/) to manage the project in an way such that reproducibility becomes effortless.
+
+
+## Virtual Environments
+
+A key to reproducibility is to clearly define an execution environment and prevent user and system-specific circumstances from creeping into it.
+The execution environment has to be mostly isolated from the existing system of the user.
+With [virtual environments](https://docs.python.org/3/tutorial/venv.html), Python has such isolation builtin.
+Poetry will manage a virtual environment for you project.
+To **set up a virtual environment for the example project**, run
+```bash
+poetry install
+```
+in the project folder.
+This command will create a new directory `.venv` containing the virtual environment.
+That is, a copy of the Python interpreter and all tools and dependencies necessary for the project.
+
+Assuming you have opened the project workspace (see [*Getting Started*](getting-started) for instructions on how to do that), you activate the virtual environment in VS Code as follows:
+Press `F1` to open the command palette and choose *Python: Select Interpreter*.
+Then choose *Entire Workspace*.
+You can now select the recommended interpreter:
+
+```{image} ./images/vscode-select-interpreter.png
+:name: vscode-select-interpreter
+:align: center
+```
+
+VS Code may also prompt you by itself when it recognizes that a virtual environment has been created.
+
+So, how do you manage this virtual environment with Poetry?
+
+
 ## Dependency Management
 
-In academia, *reproducibility* of research is key.
-An important aspect of ensuring reproducibility is to precisely capture the dependencies used by a piece of software.
-
-Using a system like [Poetry](https://python-poetry.org/) for dependency management has many advantages:
-
-- The dependencies of your projects are decoupled and installed into a *virtual environment* on a per-project basis.
-    This prevents version conflicts between multiple projects.
-- The dependencies of your projects are precisely tracked and you can be sure that everyone in your team has the exact same versions installed reducing *but it works on my machine* moments.
-- To ensure reproducibility, you have to track the dependencies anyway.
-    Doing so in a well-specified format with tool support makes reproducing your experiments a breeze.
-- Your software is already in a format suitable for distribution through package managers.
-    In the case of Python, this is [Pip](https://pypi.org/project/pip/) and the [Python Package Index](https://pypi.org).
-
-[PEP 518](https://www.python.org/dev/peps/pep-0518/) partially specifies the format of the `pyproject.toml` file.
+[PEP 518](https://www.python.org/dev/peps/pep-0518/) partially specifies the format of a `pyproject.toml` file.
 This file defines how your project is going to be build and what dependencies in which versions are required.
 
+The dependencies are specified in the `tool.poetry.dependencies` section.
+For our example:
+```toml
+[tool.poetry.dependencies]
+# required Python version
+python = "^3.8"
+```
+Currently, this specifies that a Python version of at least 3.8 but less than 4.0 is needed which is indicated by the caret `^`.
+The version 4.0 might include backwards incompatibilities, hence, the version should be less than 4.0.
+Also, we are using features introduced with Python 3.8, so, the version should be at least 3.8.
 
-## `pyproject.toml`
+As you may have noticed, Momba is not yet a dependency of the project.
+To **add Momba as a dependency** run:
+```bash
+poetry add -E engine -E docker momba
+```
 
-The `pyproject.toml` contains information about your project like its *name*, a short *description*, and a list of *authors*:
+Running this command will add Momba as a dependency to the `pyproject.toml` file:
+```toml
+momba = {version = "^0.4.2", extras = ["engine", "docker"]}
+```
 
+The `-E` flag enables optional *extras* for the package to be installed.
+The `engine` extra of Momba contains the state space exploration engine we will be using for the interactive model visualization.
+The `docker` extra of Momba enables support for running Storm through Docker.
+
+Again, the caret `^` in `^0.4.2` specifies that we want a version of Momba that is at least `0.4.2` but less than `0.5.0`.
+Introducing breaking changes requires increasing the minor version (i.e., `4` to `5` in this case) when the version number starts with `0` as is the case here.
+This kind of guaranteeing compatibility between versions is known as [*semantic versioning*](https://semver.org/).
+Note that *experimental features* are often excluded from semantic versioning and sometimes compatibility is broken by accident without changing the version number accordingly.
+For these cases, it might make sense to explicitly *pin* a precise version with `==` like so:
+```toml
+momba = {version = "==0.4.2", extras = ["engine", "docker"]} 
+```
+
+Adding a dependency with `poetry add` also modifies the `poetry.lock` file.
+This file keeps track of the precise versions needed for reproducibility and development.
+Running `poetry install` will not install just any versions compatible with the specification in `pyproject.toml` but instead *the precise versions locked* in `poetry.lock`.
+In case you make any manual changes to the `pyproject.toml` file run
+```
+poetry lock
+```
+to synchronize them into the `poetry.lock` file.
+The `poetry.lock` file even contains cryptographic hashes for all dependencies including transitive ones such that any problems with mismatching packages will become apparent when creating the virtual environment with `poetry install`.
+When using a version control system, you should commit the `poetry.lock` file alongside the `pyproject.toml` file.
+That way, all collaborators an a project will have precisely the same dependencies in the exact same versions installed.
+
+This mechanism of *locking dependencies* ensures that everyone trying to reproduce your experiments gets the exact same versions you used for running the experiments.
+By installing the dependencies with `poetry install` into a virtual environment, interferences with the system of the user are minimized.
+Also, onboarding new developers becomes very easy because it usually suffices to run `poetry install` to get a working development environment.
+In short, using a tool like Poetry makes reproducibility effortless.
+
+
+## Project Information
+
+In addition to the dependencies, the `pyproject.toml` file also contains additional metadata about your project.
+For instance, its *name*, a short *description*, or a list of *authors*.
+For the example:
 ```toml
 [tool.poetry]
 name = "fmracer"
@@ -41,13 +118,17 @@ classifiers = [
     "Operating System :: OS Independent"
 ]
 ```
+This information makes your project compatible with the wider Python ecosystem.
+In particular, your project is in a format suitable for distribution through [Pip](https://pypi.org/project/pip/) and the [Python Package Index](https://pypi.org).
+This allows others to use your project by adding it to their project with `poetry add` just like you did with Momba.
 
-Furthermore, it contains a list of dependencies:
+
+## Development Dependencies
+
+In addition to the normal dependencies we have specified, *development dependencies* can also be specified in the `pyproject.toml` file.
+This is useful for tools that are not required to *use* your project but to *contribute* to it.
+In case of our example project there are five development dependencies:
 ```toml
-[tool.poetry.dependencies]
-# required Python version
-python = "^3.8"
-
 [tool.poetry.dev-dependencies]
 black = { version = "^21.9b0", allow-prereleases = true }
 flake8 = "^3.7.9"
@@ -55,66 +136,6 @@ flake8-bugbear = "^20.1.2"
 pep8-naming = "^0.9.1"
 mypy = "^0.812"
 ```
-
-This also specifies which versions of Python are supported.
-In this case, `^3.8` says that all Python versions greater or equal to `3.8` and less than `4.0` are supported.
-This is very useful in case you are using features of Python only found in newer versions and you want to communicate this to users of your tool or package.
-From a reproducibility perspective it prevents someone from running your project with a wrong version of Python leading to all kinds of non-obvious errors.
-
-The `dev-dependencies` are dependencies which are not required for using your tool or package but for development.
-In this case, we have `black`, an auto formatter, `flake8` and some related packages for linting, and `mypy`, a type checker.
-
-
-## Managing Dependencies
-
-As you may have noticed, Momba is not yet a dependency of your project.
-To add Momba as a dependency we use `poetry`:
-```bash
-poetry add -E engine -E docker momba
-```
-This commands adds Momba as a dependency to your project.
-
-The `-E` flag enables optional *features* for the package to be installed.
-The `engine` feature of Momba contains the state space exploration engine we will be using for the interactive game.
-The `docker` feature of Momba enables support for running Storm through Docker.
-
-Running this command will add Momba as a dependency in the `dependencies` section of `pyproject.toml`:
-```toml
-momba = {version = "^0.4.2", extras = ["engine", "docker"]}
-```
-The caret `^` tells Poetry that we want a version of Momba that is at least `0.4.2` but less than `0.5.0`.
-This is used for [semantic versioning](https://semver.org/).
-Introducing breaking changes requires increasing the major version.
-Hence, it documents a minimal and a maximal version.
-Again, specifying a version like that enables reproducibility.
-
-In addition to adding Momba to the `pyproject.toml` the command also updated the `poetry.lock` file.
-This file contains precise versions of each dependency including transitive dependencies that should be used for development and reproducing results.
-It even contains cryptographic hashes of the respective dependencies to further ensure reproducibility, or, at least make it obvious, when the required file has been modified or is not available.
-
-In case you are using experimental features of a dependency which are not subject to semantic versioning, it can make sense to also *pin* the version of a dependency like so:
-```toml
-momba = {version = "==0.4.2", extras = ["engine", "docker"]} 
-```
-In case you make any manual changes to the `pyproject.toml` file run
-```
-poetry lock
-```
-to synchronize them into the `poetry.lock` file.
-
-When using a version control system, you would commit the `poetry.lock` file alongside the `pyproject.toml` file.
-That way, all collaborators an a project will have precisely the same dependencies in the exact versions installed.
-
-
-## Virtual Environments
-
-To install a virtual environment containing all the dependencies run:
-```bash
-poetry install
-```
-This will create a directory `.venv` containing a copy of your local Python interpreter and an installation of all and only the specified dependencies.
-For reproducibility, the precise versions are taken from the `poetry.lock` file.
-
-In case you are using VS Code, press `F1` to open the command palette and choose *Python: Select Interpreter*.
-Then choose *Entire Workspace*.
-You can now select the recommended interpreter from the virtual environment.
+These are the auto formatter [Black](https://github.com/psf/black), the linter [Flake8](https://flake8.pycqa.org/en/latest/) with some plugins, and the type checker [MyPy](http://mypy-lang.org/).
+These tools are used to ensure a consistent code style and quality.
+More on that in the next section.
