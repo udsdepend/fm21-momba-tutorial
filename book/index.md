@@ -7,6 +7,10 @@ Then, after a formal model has finally been conceived, one has to *validate* tha
 In this regard models are just like any other human artifact, inadequate initially but over time it gets better.
 Only after confidence in the model has been established, one is able to harvest the benefits by handing over the model to *analysis* tools, e.g., a model checker.
 
+```{important}
+See [Prepare Your System](preparation) for details on **how to prepare your system for the tutorial**.
+```
+
 [Momba](https://momba.dev) is a Python framework for working with quantitative models centered around the [JANI model interchange format](https://jani-spec.org).
 Momba strives to deliver an integrated and intuitive experience to aid the process of model construction, validation, and analysis.
 In this tutorial, we will guide you through the process from model construction to analysis using a concrete example inspired by the [Racetrack benchmark](https://racetrack.perspicuous-computing.science/).
@@ -15,7 +19,6 @@ Along the way, you will also learn how to set up a Python Project in a way enabl
 Over the past decade, Python has gained popularity especially in academia where the requirements for reproducibility are high.
 
 We plan to run the tutorial as an interactive online event interleaving talks with hands-on sessions.
-See [Prepare Your System](preparation) for details on how to prepare your system for the tutorial.
 
 ```{hint}
 This page contains a written version of the tutorial for reference.
