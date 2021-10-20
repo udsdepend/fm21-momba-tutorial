@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Getting Started &#8212; FM&#39;21: Tutorial</title>
+    <title>2.2. VS Code Workspaces &#8212; FM&#39;21: Tutorial</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="2. Best Practices" href="../best-practices/" />
-    <link rel="prev" title="Prepare Your System" href="../../preparation/" />
+    <link rel="next" title="2.3. Consistent Code Style" href="../code-style/" />
+    <link rel="prev" title="2.1. Dependency Management" href="../dependency-management/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -99,28 +99,28 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../getting-started/">
    1. Getting Started
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../best-practices/">
    2. Best Practices
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="../dependency-management/">
      2.1. Dependency Management
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../vscode-workspaces/">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      2.2. VS Code Workspaces
     </a>
    </li>
@@ -237,7 +237,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tutorial/getting-started.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tutorial/vscode-workspaces.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -270,32 +270,10 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="getting-started">
-<h1><span class="section-number">1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
-<p>To get started, you first have to obtain the material for the tutorial.</p>
-<p>If you have <a class="reference external" href="https://git-scm.com">Git</a> installed, clone the material with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">udsdepend</span><span class="o">/</span><span class="n">fm21</span><span class="o">-</span><span class="n">momba</span><span class="o">-</span><span class="n">tutorial</span><span class="o">.</span><span class="n">git</span>
-</pre></div>
-</div>
-<p>Otherwise, you can also <a class="reference external" href="https://github.com/udsdepend/fm21-momba-tutorial/archive/refs/heads/master.zip">download the material as a ZIP file</a>.</p>
-<p>After cloning the material or extracting the ZIP file, you find a file <code class="docutils literal notranslate"><span class="pre">workspace.code-workspace</span></code> in the cloned or extracted folder.
-This file defines a <a class="reference external" href="https://code.visualstudio.com/docs/editor/workspaces">VS Code <em>workspace</em></a>.
-To open the workspace run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="n">workspace</span><span class="o">.</span><span class="n">code</span><span class="o">-</span><span class="n">workspace</span>
-</pre></div>
-</div>
-<p>Alternatively, you can also open the workspace from within VS Code: To this end, open the <em>command palette</em> by pressing <code class="docutils literal notranslate"><span class="pre">F1</span></code>, type <em>File: Open Workspace from File</em>, and hit the enter key:</p>
-<img alt="../../_images/vscode-open-workspace.png" class="align-center" id="vscode-open-workspace" src="../../_images/vscode-open-workspace.png" />
-<p>Then, choose the <code class="docutils literal notranslate"><span class="pre">workspace.code-workspace</span></code> file to open the workspace.</p>
-<p>After opening the workspace, VS Code should ask you whether you want to install the <em>recommended extensions</em>:</p>
-<img alt="../../_images/vscode-install-extensions.png" class="align-center" id="id1" src="../../_images/vscode-install-extensions.png" />
-<p>The workspace comes with four recommended extensions for spell checking, Python support, and <a class="reference external" href="https://toml.io/en/">TOML</a> support.
-TOML is the file format used to configure a Python project.
-More about that later.</p>
-<p>Should VS Code not ask you to install the recommended extensions, you probably have them installed already.
-To view the recommended extensions of the workspace and check whether they are installed, open the command palette by pressing <code class="docutils literal notranslate"><span class="pre">F1</span></code> and then choose <em>Extensions: Show Recommended Extensions</em>.</p>
-<p>The workspace also contains settings for the project.</p>
-<p>Congratulations, you are now fully prepared for the tutorial. 🎉</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="vs-code-workspaces">
+<h1><span class="section-number">2.2. </span>VS Code Workspaces<a class="headerlink" href="#vs-code-workspaces" title="Permalink to this headline">¶</a></h1>
+<p>Define settings and extensions needed for development.</p>
+<p>TODO: Explain how this is done for our example and what we have configured there.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -328,19 +306,19 @@ To view the recommended extensions of the workspace and check whether they are i
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../../preparation/" title="previous page">
+        <a class="left-prev" href="../dependency-management/" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Prepare Your System</p>
+                <p class="prevnext-title"><span class="section-number">2.1. </span>Dependency Management</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../best-practices/" title="next page">
+        <a class="right-next" href="../code-style/" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">2. </span>Best Practices</p>
+                <p class="prevnext-title"><span class="section-number">2.3. </span>Consistent Code Style</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
