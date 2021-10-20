@@ -58,7 +58,7 @@ The tutorial takes place on **November, 20th** during sessions 1 through 2 ([**1
 
       We walk you through the state space exploration API provided by Momba.
       You will programm an interactive visualization for your model.
-  - [*Model Analysis*](tutorial/model-analysis): **How to *analysis* a formal model with Momba?**
+  - [*Model Analysis*](tutorial/model-analysis): **How to *analyze* a formal model with Momba?**
 
       We will briefly introduce quantitative model checking.
       We then walk you through the analysis API provided by Momba.
