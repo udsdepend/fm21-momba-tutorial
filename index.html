@@ -136,8 +136,8 @@
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="tutorial/model-creation/">
-   4. Model Creation
+  <a class="reference internal" href="tutorial/model-construction/">
+   4. Model Construction
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -267,8 +267,8 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#preliminary-agenda">
-   Preliminary Agenda
+  <a class="reference internal nav-link" href="#preliminary-schedule">
+   Preliminary Schedule
   </a>
  </li>
 </ul>
@@ -291,41 +291,61 @@ Then, after a formal model has finally been conceived, one has to <em>validate</
 In this regard models are just like any other human artifact, inadequate initially but over time it gets better.
 Only after confidence in the model has been established, one is able to harvest the benefits by handing over the model to <em>analysis</em> tools, e.g., a model checker.</p>
 <p><a class="reference external" href="https://momba.dev">Momba</a> is a Python framework for working with quantitative models centered around the <a class="reference external" href="https://jani-spec.org">JANI model interchange format</a>.
+Momba strives to deliver an integrated and intuitive experience to aid the process of model construction, validation, and analysis.
 In this tutorial, we will guide you through the process from model construction to analysis using a concrete example inspired by the <a class="reference external" href="https://racetrack.perspicuous-computing.science/">Racetrack benchmark</a>.
-You will learn (1) how to leverage Momba’s API to programmatically turn a domain-specific scenario description (e.g., a map of a game or a circuit diagram) into a quantitative model, (2) how to validate and test such models using Momba’s explicit state space exploration engine by prototyping a tool for interactive model exploration and visualization, and (3) how to use the unified interfaces provided by Momba to invoke state-of-the-art tools for model analysis.</p>
-<p>Over the past decade, Python has gained popularity especially in academia where the requirements for reproducibility are high.
-Hence, in this tutorial, you will also learn how to use Python and set up a project in a way enabling collaboration and easy packaging of reproducible artifacts.</p>
+You will learn (1) how to leverage Momba’s API to programmatically turn a domain-specific scenario description (e.g., a map of a game or a circuit diagram) into a quantitative model, (2) how to validate and test such models using Momba’s explicit state space exploration engine by prototyping a tool for interactive model exploration and visualization, and (3) how to use the unified interfaces provided by Momba to invoke state-of-the-art tools for model analysis.
+Along the way, you will also learn how to set up a Python Project in a way enabling collaboration and easy packaging of reproducible artifacts.
+Over the past decade, Python has gained popularity especially in academia where the requirements for reproducibility are high.</p>
 <p>We plan to run the tutorial as an interactive online event interleaving talks with hands-on sessions.
-We will provide you with material on how to prepare your computer for the tutorial upfront.</p>
+See <a class="reference internal" href="preparation/"><span class="doc std std-doc">Prepare Your System</span></a> for details on how to prepare your system for the tutorial.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>This page contains a written version of the tutorial for reference.
+We will walk you through the tutorial on the day of the tutorial.
+You do not need to do anything upfront besides <a class="reference internal" href="preparation/"><span class="doc std std-doc">preparing your system</span></a>.</p>
+</div>
 <p>The hands-on experience will be based on the example of a jump’n’run game where a player has to move from left to right at a constant speed while avoiding obstacles by moving up or down.
 The actions of the player are subject to probabilistic noise, i.e., not every action has an effect and the player may continue moving straight instead of moving up or down.
 You will construct a formal model based on a map of the game, write an interactive simulation and visualization based on the model using Momba’s explicit state space exploration engine, and analyze the model with <a class="reference external" href="https://modestchecker.org">The Modest Toolset</a> and <a class="reference external" href="https://www.stormchecker.org/">Storm</a>.
 We provide you with a project skeleton for the example.</p>
-<div class="section" id="preliminary-agenda">
-<h2>Preliminary Agenda<a class="headerlink" href="#preliminary-agenda" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="preliminary-schedule">
+<h2>Preliminary Schedule<a class="headerlink" href="#preliminary-schedule" title="Permalink to this headline">¶</a></h2>
+<p>The tutorial takes place on <strong>November, 20th</strong> during sessions 1 through 2 (<a class="reference external" href="https://www.timeanddate.com/worldclock/fixedtime.html?msg=FM%2721%3A+Momba+Tutorial&amp;iso=20211120T16&amp;p1=33&amp;ah=3&amp;am=30"><strong>16:00–19:30</strong> CST</a>).</p>
 <ul>
-<li><p><strong>9:00–09:45</strong>: The tutorial starts with a talk introducing quantitative modelling with Momba where we aim to answer the following questions:</p>
-<ul class="simple">
-<li><p>What are <em>quantitative models</em>?</p></li>
-<li><p>What is the JANI model interchange format?</p></li>
-<li><p>What features does Momba offer for quantitative modeling?</p></li>
-<li><p>What use cases is Momba suited for?</p></li>
-</ul>
-<p>We will demonstrate the core features of Momba using the Racetrack benchmark and give a glimpse on the APIs Momba provides for model construction, exploration, and analysis.
-We then introduce the example the tutorial will be based upon.
-The idea is that you go through the whole process from model construction to analysis using this example.
-We show what you can expect and what the final result will look like.</p>
+<li><p><strong>16:00–17:30</strong>: Session 1</p>
+<ul>
+<li><p><em>Introduction</em>: What are you going to learn throughout the tutorial?</p></li>
+<li><p><a class="reference internal" href="tutorial/getting-started/"><span class="doc std std-doc"><em>Getting Started</em></span></a>: We walk you through the process of setting up the provided project skeleton such that you can follow along.
+Please make sure to have <a class="reference internal" href="preparation/"><span class="doc std std-doc">prepared your system upfront</span></a>.</p></li>
+<li><p><a class="reference internal" href="tutorial/best-practices/"><span class="doc std std-doc"><em>Best Practices</em></span></a>: <strong>How to set up a Python project for reproducibility and easy collaboration?</strong></p>
+<p>We will walk you through the provided project skeleton.
+You will learn how to manage dependencies in a way that enables reproducibility, prevents version conflicts, and makes collaboration easy.
+We will demonstrate how to use VS Code workspaces to unify the development environment across a project and how to use tools such as auto formatters and linters to ensure a consistent code style.</p>
 </li>
-<li><p><strong>09:45–10:00</strong>: A short interactive talk explaining the project setup and which tools we recommend using for working with Python in an academic setting.
-This talk covers best practices for reproducibility and collaboration concerning the usage of Python within the academic community.
-You can ask questions and we make sure that everyone has a working setup for the remainder of the tutorial.</p></li>
-<li><p><strong>10:00–10:30</strong>: Coffee Break</p></li>
-<li><p><strong>10:30–11:25</strong>: Hands-on session on model construction.
-We demonstrate how to construct an automaton using Momba and then task you with the construction of a formal model for the example.</p></li>
-<li><p><strong>11:25–12:00</strong>: Hands-on session on model exploration.
-We demonstrate how to use Momba’s explicit state space exploration engine and then task you with building a tool for interactive model exploration and visualization which allows playing the game on the console.</p></li>
-<li><p><strong>12:00–12:30</strong>: Hands-on session on model analysis.
-You will take their model and analyze it using the state-of-the-art tools The Modest Toolset and Storm vie the APIs Momba provides.</p></li>
+<li><p><a class="reference internal" href="tutorial/running-example/"><span class="doc std std-doc"><em>Running Example</em></span></a>: We introduce the example you will be working with in more detail.</p></li>
+<li><p><a class="reference internal" href="tutorial/model-construction/"><span class="doc std std-doc"><em>Model Construction</em></span></a>:
+We introduce the theory behind Momba and the <a class="reference external" href="https://jani-spec.org">JANI model format</a>.</p></li>
+</ul>
+</li>
+<li><p><strong>17:00–17:30</strong>: Break (<em>deviates from the official schedule</em>)</p></li>
+<li><p><strong>17:30–19:30</strong>: Session 2</p>
+<ul>
+<li><p><a class="reference internal" href="tutorial/model-construction/"><span class="doc std std-doc"><em>Model Construction</em></span></a>: <strong>How to <em>construct</em> a formal model with Momba?</strong></p>
+<p>We walk you through the API provided by Momba to programmatically construct JANI models.
+Afterwards, you will have the opportunity to develop a model on your own using the skeleton we provide.</p>
+</li>
+<li><p><a class="reference internal" href="tutorial/model-validation/"><span class="doc std std-doc"><em>Model Validation</em></span></a>: <strong>How to <em>validate</em> a formal model with Momba?</strong></p>
+<p>We walk you through the state space exploration API provided by Momba.
+You will programm an interactive visualization for your model.</p>
+</li>
+<li><p><a class="reference internal" href="tutorial/model-analysis/"><span class="doc std std-doc"><em>Model Analysis</em></span></a>: <strong>How to <em>analysis</em> a formal model with Momba?</strong></p>
+<p>We will briefly introduce quantitative model checking.
+We then walk you through the analysis API provided by Momba.
+Using this API, you will analyze properties of your model.</p>
+</li>
+<li><p><a class="reference internal" href="tutorial/takeaways/"><span class="doc std std-doc"><em>Takeaways</em></span></a>: We wrap up the tutorial with the important takeaways.</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
