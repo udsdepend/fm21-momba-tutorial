@@ -5,7 +5,7 @@ Most prominently, experiments conducted and presented in papers should be *repro
 This is also the reason why most conferences strongly encourage the submission of artifacts with papers.
 
 Setting up a Python project with reproducibility in mind will make your life much easier down the road when it comes to submitting artifacts or onboarding new developers.
-For our example project, we are using [Poetry](https://python-poetry.org/) to manage the project in an way such that reproducibility becomes effortless.
+For our example project, we are using [Poetry](https://python-poetry.org/) to manage the project in a way such that reproducibility becomes effortless.
 
 
 ## Virtual Environments
