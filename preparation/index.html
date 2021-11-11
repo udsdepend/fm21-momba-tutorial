@@ -319,9 +319,9 @@ Assuming you have installed Python 3.9 run:</p>
 </div>
 <p>Note that this will install Poetry for the current user only.
 To use poetry the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory of the user (<code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code>) needs to be in the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable.
-This should be the case by default.
+This should be the case by default for shells other than Bash.
 If running <code class="docutils literal notranslate"><span class="pre">poetry</span></code> fails, you can extend the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> variable for the current user by executing (requires restarting the shell to take effect):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;PATH=&quot;$HOME/.local/bin:$PATH&quot;&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">profile</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;PATH=&quot;$HOME/.local/bin:$PATH&quot;&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bashrc</span>
 </pre></div>
 </div>
 <p>Please <strong>check that Poetry works</strong> with:</p>
@@ -336,7 +336,8 @@ sudo groupadd -f docker
 sudo usermod -aG docker $USER
 </pre></div>
 </div>
-<p>This will also add a group <code class="docutils literal notranslate"><span class="pre">docker</span></code> and add the current user to it (required to execute <code class="docutils literal notranslate"><span class="pre">docker</span></code>).</p>
+<p>This will also add a group <code class="docutils literal notranslate"><span class="pre">docker</span></code> and add the current user to it (required to execute <code class="docutils literal notranslate"><span class="pre">docker</span></code>).
+You may need to logout and login again for the changes to take effect.</p>
 <p>To <strong>pull the Docker image required for Storm</strong> run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">movesrwth</span><span class="o">/</span><span class="n">storm</span><span class="p">:</span><span class="n">travis</span>
 </pre></div>

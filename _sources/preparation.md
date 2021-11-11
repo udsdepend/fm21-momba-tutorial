@@ -32,10 +32,10 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
     ```
     Note that this will install Poetry for the current user only.
     To use poetry the `bin` directory of the user (`~/.local/bin`) needs to be in the `PATH` environment variable.
-    This should be the case by default.
+    This should be the case by default for shells other than Bash.
     If running `poetry` fails, you can extend the `PATH` variable for the current user by executing (requires restarting the shell to take effect):
     ```
-    echo 'PATH="$HOME/.local/bin:$PATH"' >> ~/.profile
+    echo 'PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
     ```
     Please **check that Poetry works** with:
     ```
@@ -49,6 +49,7 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
     sudo usermod -aG docker $USER
     ```
     This will also add a group `docker` and add the current user to it (required to execute `docker`).
+    You may need to logout and login again for the changes to take effect.
 
     To **pull the Docker image required for Storm** run:
     ```
