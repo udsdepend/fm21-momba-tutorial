@@ -22,7 +22,7 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
     ```
     sudo add-apt-repository -y ppa:deadsnakes/ppa
     sudo apt-get update -y
-    sudo apt-get install -y python3.9 python3.9-dev python3.9-venv
+    sudo apt-get install -y python3.9 python3.9-dev python3.9-venv python3-pip
     ```
     Note that Momba requires at least Python version 3.8. Older versions will **not** work.
 2. We will be using [Poetry](https://python-poetry.org/) for dependency management.
