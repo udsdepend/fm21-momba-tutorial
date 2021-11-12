@@ -9,4 +9,4 @@ The tutorial is [available online](https://fm21.momba.dev).
 
 - `fmracer`: Contains a skeleton Python package for the tutorial.
 - `tracks`: Contains *track files* for the tutorial.
-- `solution`: Contains solutions for the exercises of the tutorial.
+- `solutions`: Contains solutions for the exercises of the tutorial.
