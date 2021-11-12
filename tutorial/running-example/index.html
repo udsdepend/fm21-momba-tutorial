@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -272,7 +274,24 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="running-example">
 <h1><span class="section-number">3. </span>Running Example<a class="headerlink" href="#running-example" title="Permalink to this headline">¶</a></h1>
-<p>TODO: Describe the running example.</p>
+<p>As a running example, we will be using a simple <a class="reference external" href="https://en.wikipedia.org/wiki/Platform_game">jump ‘n’ run</a> game where the player has to avoid obstacles while moving forward at a constant speed.
+To avoid obstacles the player can move left or right.
+The goal is to reach the end of the <em>track</em> without crashing into an obstacle.</p>
+<p>With the help of a little ASCII art, a track may be represented as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>       <span class="n">x</span>         <span class="n">xxxxx</span>     <span class="n">x</span>      
+           <span class="n">xxx</span>          <span class="n">x</span>      <span class="n">xx</span> 
+ <span class="n">xxxxxxx</span>          <span class="n">xx</span>              
+</pre></div>
+</div>
+<p>Every <code class="docutils literal notranslate"><span class="pre">x</span></code> represents an obstacle the player has to avoid.
+The player starts on the left and moves forward to the right.
+The player wins, if and only if it moves beyond the <em>finishing line</em>, i.e., reaches the end of the track.
+Now, given such a track, we will (1) <a class="reference internal" href="../model-construction/"><span class="doc std std-doc">construct a formal model</span></a> of the game.
+Note that this goes beyond what is possible with mere parametrization of a model.
+After creating a formal model, we will (2) <a class="reference internal" href="../model-validation/"><span class="doc std std-doc">write an interactive simulation</span></a> of the game based on the model which can be played on the console.
+This simulation helps validating the model.
+The model will be noisy in the sense that an action of the player may take no effect with a certain probability, i.e., even if playing optimally, the probability of winning is not <span class="math notranslate nohighlight">\(1\)</span>.
+Hence, we will (3) <a class="reference internal" href="../model-analysis/"><span class="doc std std-doc">determine the probability of winning</span></a> when playing optimally using a probabilistic model checker.</p>
 </div>
 
     <script type="text/x-thebe-config">
