@@ -27,9 +27,6 @@ align: center
 Parking lot ticket machine and gate.
 ```
 
-
-### Automata
-
 {numref}`parking-lot-automaton` shows a JANI automaton modeling the parking lot and ticket machine.
 This automaton has two *locations*, *closed* and *open* corresponding to the gate being closed and open, respectively.
 These locations are connected by *edges*.
@@ -68,7 +65,8 @@ align: center
 Driver automaton.
 ```
 
-### Network
+By synchronizing these automata on their shared labels, *press* and *enter*, we obtain an automaton *network*.
+Using this network, we can for instance model check the probability that the driver will eventually enter the parking lot given that the parking lot is in its initial completely empty state.
 
 
 ## Momba

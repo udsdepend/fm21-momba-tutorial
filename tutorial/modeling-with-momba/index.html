@@ -271,18 +271,6 @@
   <a class="reference internal nav-link" href="#example-parking-lot">
    4.1.1. Example: Parking Lot
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#automata">
-     4.1.1.1. Automata
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#network">
-     4.1.1.2. Network
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#momba">
@@ -319,8 +307,6 @@ As you can see from the picture, the ticket machine is quite old, thus the butto
 <div class="figure align-center" id="parking-lot-image">
 <img alt="../../_images/parking-lot-image.drawio.svg" src="../../_images/parking-lot-image.drawio.svg" /><p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Parking lot ticket machine and gate.</span><a class="headerlink" href="#parking-lot-image" title="Permalink to this image">¶</a></p>
 </div>
-<div class="section" id="automata">
-<h3><span class="section-number">4.1.1.1. </span>Automata<a class="headerlink" href="#automata" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="#parking-lot-automaton"><span class="std std-numref">Fig. 4.2</span></a> shows a JANI automaton modeling the parking lot and ticket machine.
 This automaton has two <em>locations</em>, <em>closed</em> and <em>open</em> corresponding to the gate being closed and open, respectively.
 These locations are connected by <em>edges</em>.
@@ -346,10 +332,8 @@ If the gate does not open after pressing the button three times, they will give 
 <div class="figure align-center" id="driver-automaton">
 <img alt="../../_images/driver.drawio.svg" src="../../_images/driver.drawio.svg" /><p class="caption"><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Driver automaton.</span><a class="headerlink" href="#driver-automaton" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-<div class="section" id="network">
-<h3><span class="section-number">4.1.1.2. </span>Network<a class="headerlink" href="#network" title="Permalink to this headline">¶</a></h3>
-</div>
+<p>By synchronizing these automata on their shared labels, <em>press</em> and <em>enter</em>, we obtain an automaton <em>network</em>.
+Using this network, we can for instance model check the probability that the driver will eventually enter the parking lot given that the parking lot is in its initial completely empty state.</p>
 </div>
 <div class="section" id="momba">
 <h2><span class="section-number">4.1.2. </span>Momba<a class="headerlink" href="#momba" title="Permalink to this headline">¶</a></h2>
