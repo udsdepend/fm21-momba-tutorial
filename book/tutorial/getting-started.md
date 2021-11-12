@@ -33,6 +33,7 @@ After opening the workspace, VS Code should ask you whether you want to install 
 The workspace comes with four recommended extensions for spell checking, Python support, and [TOML](https://toml.io/en/) support.
 TOML is the file format used to configure a Python project.
 More about that later.
+Please click on *Install* to install the recommended extensions.
 
 Should VS Code not ask you to install the recommended extensions, you probably have them installed already.
 To view the recommended extensions of the workspace and check whether they are installed, open the command palette by pressing `F1` and then choose *Extensions: Show Recommended Extensions*.
