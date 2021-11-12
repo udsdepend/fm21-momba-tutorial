@@ -1,6 +1,6 @@
 # Consistent Code Style
 
-Let us approach this controversial topic with a quote by Donald Knuth:
+Let us approach this potentially controversial topic with a quote by Donald Knuth:
 
 > “Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a *computer* what to do, let us concentrate rather on explaining to *human beings* what we want a computer to do.”
 >

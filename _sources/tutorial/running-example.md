@@ -19,5 +19,5 @@ Now, given such a track, we will (1) [construct a formal model](model-constructi
 Note that this goes beyond what is possible with mere parametrization of a model.
 After creating a formal model, we will (2) [write an interactive simulation](model-validation) of the game based on the model which can be played on the console.
 This simulation helps validating the model.
-The model will be noisy in the sense that an action of the player may take no effect with a certain probability, i.e., even if playing optimally, the probability of winning is not $1$.
+The model will be noisy in the sense that an action of the player may have no effect with a certain probability, i.e., even if playing optimally, the probability of winning is not $1$.
 Hence, we will (3) [determine the probability of winning](model-analysis) when playing optimally using a probabilistic model checker.
