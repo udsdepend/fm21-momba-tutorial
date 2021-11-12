@@ -15,6 +15,15 @@ While you may be able to participate with another IDE or editor, having the feat
 
 In case you have any questions, join our <a href="https://gitter.im/koehlma/momba?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/koehlma/momba.svg"></a> or send us an email.
 
+```{admonition} Hint
+:class: tip
+
+Installing Docker is optional.
+In case you choose not to install Docker, you will not be able to use [Storm](https://www.stormchecker.org/) for model checking.
+Still, you will be able to use `mcsta` of the [Modest Toolset](https://www.modestchecker.net/).
+```
+
+
 
 ## Ubuntu
 
@@ -83,6 +92,7 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
     If you are in doubt, you may want to remove the existing installation and reinstall it as described here.
     This ensures that everything works as expected.
 2. We will be using [Poetry](https://python-poetry.org/) for dependency management.
+
     Assuming you have installed Python 3.9, open a PowerShell as administrator.
     Right click on the start menu and select *Windows PowerShell (Admin)*.
     Then run:
