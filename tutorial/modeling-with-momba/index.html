@@ -303,28 +303,31 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="modeling-with-momba">
 <h1><span class="section-number">4.1. </span>Modeling with Momba<a class="headerlink" href="#modeling-with-momba" title="Permalink to this headline">¶</a></h1>
 <p>Momba is centered around the <a class="reference external" href="https://jani-spec.org">JANI</a> model interchange format.
-JANI is a well-established standard in the quantitative model checking community and is supported by a variety of model checking tools.</p>
-<p>A JANI model is a <em>network</em> of interacting <em>automata</em>.
-These automata are annotated with variables and can comprise non-deterministic choices, probabilistic behavior, continuous system dynamics, as well as real-time behavior.
+JANI is a well-established standard in the quantitative model checking community and is supported by a variety of tools.
+A JANI model is a <em>network</em> of interacting <em>automata</em>.
+These automata are annotated with variables and can comprise non-deterministic choices, probabilistic behavior, continuous dynamics, as well as real-time behavior.
 For the purpose of this tutorial, we are only using a subset of these features, namely non-deterministic choices and probabilistic behavior.</p>
 <div class="section" id="example-parking-lot">
 <h2><span class="section-number">4.1.1. </span>Example: Parking Lot<a class="headerlink" href="#example-parking-lot" title="Permalink to this headline">¶</a></h2>
-<p>To get a first intuition, how JANI models work, consider the example of a parking lot with a ticket machine.
+<p>To get a first intuition, how JANI models work, consider the example of a parking lot with a ticket machine (see <a class="reference internal" href="#parking-lot-image"><span class="std std-numref">Fig. 4.1</span></a>).
 The amount of parking spots in the parking lot is of course finite (100 in the following), hence, the ticket machine must not give out more tickets than there are free spaces.
 When the parking lot is full, a car must leave before a new ticket can be issued.
 To issue a ticket, the driver has to <em>push</em> a button.
 After pushing the button, the gate will open such that the driver can <em>enter</em> the parking lot.
 After entering the parking lot, the gate closes again.
-As the ticket machine is quite old, the button may fail with a probability of 10%.</p>
+As you can see from the picture, the ticket machine is quite old, thus the button fails 10% of the time.</p>
+<div class="figure align-center" id="parking-lot-image">
+<img alt="../../_images/parking-lot-image.drawio.svg" src="../../_images/parking-lot-image.drawio.svg" /><p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Parking lot ticket machine and gate.</span><a class="headerlink" href="#parking-lot-image" title="Permalink to this image">¶</a></p>
+</div>
 <div class="section" id="automata">
 <h3><span class="section-number">4.1.1.1. </span>Automata<a class="headerlink" href="#automata" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference internal" href="#parking-lot-automaton"><span class="std std-numref">Fig. 4.1</span></a> shows a JANI automaton modeling the parking lot and ticket machine.
+<p><a class="reference internal" href="#parking-lot-automaton"><span class="std std-numref">Fig. 4.2</span></a> shows a JANI automaton modeling the parking lot and ticket machine.
 This automaton has two <em>locations</em>, <em>closed</em> and <em>open</em> corresponding to the gate being closed and open, respectively.
 These locations are connected by <em>edges</em>.
 Edges are <em>labeled</em>.
 In this case, there are three labels: <em>press</em>, <em>enter</em>, and <em>leave</em>.</p>
 <div class="figure align-center" id="parking-lot-automaton">
-<img alt="../../_images/parking-lot.drawio.svg" src="../../_images/parking-lot.drawio.svg" /><p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Parking lot and ticket machine automaton.</span><a class="headerlink" href="#parking-lot-automaton" title="Permalink to this image">¶</a></p>
+<img alt="../../_images/parking-lot.drawio.svg" src="../../_images/parking-lot.drawio.svg" /><p class="caption"><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Parking lot and ticket machine automaton.</span><a class="headerlink" href="#parking-lot-automaton" title="Permalink to this image">¶</a></p>
 </div>
 <p>The variable <em>counter</em> keeps track of the amount of cars currently in the parking lot.
 It is initialized to zero when entering the initial <em>closed</em> state.
@@ -337,11 +340,11 @@ When the gate is <em>open</em>, a car can <em>enter</em> the parking lot.
 After entering, the gate will be <em>closed</em> again.
 Also, a car can <em>leave</em> the parking lot at any time.
 When a car leaves, the counter will be decremented.</p>
-<p><a class="reference internal" href="#driver-automaton"><span class="std std-numref">Fig. 4.2</span></a> shows a JANI automaton modeling a driver who tries to enter the parking lot.
+<p><a class="reference internal" href="#driver-automaton"><span class="std std-numref">Fig. 4.3</span></a> shows a JANI automaton modeling a driver who tries to enter the parking lot.
 The driver will try to press the button at most three times and enters the parking lot in case the gate opens.
 If the gate does not open after pressing the button three times, they will give up trying.</p>
 <div class="figure align-center" id="driver-automaton">
-<img alt="../../_images/driver.drawio.svg" src="../../_images/driver.drawio.svg" /><p class="caption"><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Driver automaton.</span><a class="headerlink" href="#driver-automaton" title="Permalink to this image">¶</a></p>
+<img alt="../../_images/driver.drawio.svg" src="../../_images/driver.drawio.svg" /><p class="caption"><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Driver automaton.</span><a class="headerlink" href="#driver-automaton" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="network">
