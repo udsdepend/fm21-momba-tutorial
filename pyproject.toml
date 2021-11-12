@@ -29,6 +29,9 @@ flake8-bugbear = "^20.1.2"
 pep8-naming = "^0.9.1"
 mypy = "^0.812"
 
+[tool.poetry.scripts]
+fmracer = "fmracer.__main__:main"
+
 [build-system]
 requires = ["poetry_core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
