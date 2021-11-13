@@ -18,7 +18,7 @@ You will learn (1) how to leverage Momba's API to programmatically turn a domain
 Along the way, you will also learn how to set up a Python Project in a way enabling collaboration and easy packaging of reproducible artifacts.
 Over the past decade, Python has gained popularity especially in academia where the requirements for reproducibility are high.
 
-We plan to run the tutorial as an interactive online event interleaving talks with hands-on sessions.
+We run the tutorial as an interactive online event interleaving talks with hands-on sessions.
 
 ```{hint}
 This page contains a written version of the tutorial for reference.
@@ -28,7 +28,7 @@ You do not need to do anything upfront besides [preparing your system](preparati
 
 The hands-on experience will be based on the example of a jump'n'run game where a player has to move from left to right at a constant speed while avoiding obstacles by moving up or down.
 The actions of the player are subject to probabilistic noise, i.e., not every action has an effect and the player may continue moving straight instead of moving up or down.
-You will construct a formal model based on a map of the game, write an interactive simulation and visualization based on the model using Momba's explicit state space exploration engine, and analyze the model with [The Modest Toolset](https://modestchecker.org) and [Storm](https://www.stormchecker.org/).
+You will construct a formal model based on a map of the game, write an interactive simulation and visualization based on the model using Momba's explicit state space exploration engine, and analyze the model with [The Modest Toolset](https://modestchecker.org).
 We provide you with a project skeleton for the example.
 
 
