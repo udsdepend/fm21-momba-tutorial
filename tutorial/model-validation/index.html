@@ -51,8 +51,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex/" />
     <link rel="search" title="Search" href="../../search/" />
-    <link rel="next" title="5.1. State Space Exploration" href="../state-space-exploration/" />
-    <link rel="prev" title="4.3. Reference Model" href="../reference-model/" />
+    <link rel="next" title="6. Model Analysis" href="../model-analysis/" />
+    <link rel="prev" title="4.2. Model the Game" href="../model-the-game/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -156,48 +156,16 @@
      4.2. Model the Game
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../reference-model/">
-     4.3. Reference Model
-    </a>
-   </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    5. Model Validation
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../state-space-exploration/">
-     5.1. State Space Exploration
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../interactive-game/">
-     5.2. Interactive Game
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../reference-game/">
-     5.3. Reference Implementation
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../model-analysis/">
    6. Model Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../takeaways/">
-   7. Takeaways
   </a>
  </li>
 </ul>
@@ -262,6 +230,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   5.1. Interactive Game
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -272,7 +253,45 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="model-validation">
 <h1><span class="section-number">5. </span>Model Validation<a class="headerlink" href="#model-validation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+<p>After a formal model has been conceived, one has to <em>validate</em> that the model actually adequately models what should be modeled.
+In case the model is not adequate, results obtained by analysis techniques are meaningless.
+One way to validate a formal model is to program an interactive simulation where the modeler and other stakeholders can interact with the model and test whether it has the desired properties.</p>
+<p>To validate the model of the jump’n’run game, you will program an interactive simulation in terms of a console game where you can steer the car through a track.
+To this end, you will use Momba’s state space exploration engine.
+Given a JANI automaton network, Momba provides an API to explore its state space.</p>
+<p><a class="reference internal" href="#interactive-game"><span class="std std-numref">Fig. 5.1</span></a> shows the console game.
+The player (blue <code class="docutils literal notranslate"><span class="pre">x</span></code>) is controlled with the arrow keys.</p>
+<div class="figure align-center" id="interactive-game">
+<a class="reference internal image-reference" href="../../_images/interactive-game.gif"><img alt="../../_images/interactive-game.gif" src="../../_images/interactive-game.gif" style="width: 631.4px; height: 197.39999999999998px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Interactive simulation of the jump’n’run game.</span><a class="headerlink" href="#interactive-game" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">5.1. </span>Interactive Game<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>For the console interface, we first have to add a few dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">poetry</span> <span class="n">add</span> <span class="n">asciimatics</span>
+<span class="n">poetry</span> <span class="n">add</span> <span class="n">click</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/peterbrittain/asciimatics">Asciimatics</a> is a package for creating full-screen console UIs and <a class="reference external" href="https://click.palletsprojects.com/">Click</a> is a package for parsing command line arguments.
+With Momba you have Python’s whole ecosystem right at your fingertips.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>The file <code class="docutils literal notranslate"><span class="pre">fmracer/interactive.py</span></code> provides a skeleton of the interactive simulation which you have to complete by filling in the gaps.
+Again, each gap comes with detailed instructions and hints what you need to do.</p>
+</div>
+<p>To run the simulation, you have to first activate the virtual environment.
+In the VS Code terminal, this is done automatically.
+Within another terminal, you activate the environment with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">poetry</span> <span class="n">shell</span>
+</pre></div>
+</div>
+<p>Having activated the virtual environment, you start the game with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fmracer</span> <span class="n">race</span> <span class="n">tracks</span><span class="o">/</span><span class="n">simple</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>This will use the track defined in <code class="docutils literal notranslate"><span class="pre">tracks/simple.txt</span></code>.</p>
+<p>Using the option <code class="docutils literal notranslate"><span class="pre">--fail-probability</span></code> you can also change the probability with which an action fails.</p>
+<p>The file <code class="docutils literal notranslate"><span class="pre">solutions/interactive.py</span></code> contains a possible solution.</p>
 </div>
 </div>
 
@@ -306,19 +325,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../reference-model/" title="previous page">
+        <a class="left-prev" href="../model-the-game/" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">4.3. </span>Reference Model</p>
+                <p class="prevnext-title"><span class="section-number">4.2. </span>Model the Game</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../state-space-exploration/" title="next page">
+        <a class="right-next" href="../model-analysis/" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">5.1. </span>State Space Exploration</p>
+                <p class="prevnext-title"><span class="section-number">6. </span>Model Analysis</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

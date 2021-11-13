@@ -156,48 +156,16 @@
      4.2. Model the Game
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../reference-model/">
-     4.3. Reference Model
-    </a>
-   </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../model-validation/">
    5. Model Validation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../state-space-exploration/">
-     5.1. State Space Exploration
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../interactive-game/">
-     5.2. Interactive Game
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../reference-game/">
-     5.3. Reference Implementation
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../model-analysis/">
    6. Model Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../takeaways/">
-   7. Takeaways
   </a>
  </li>
 </ul>
@@ -321,11 +289,11 @@ Independent on whether the gate is <em>open</em> or <em>closed</em>, the driver 
 In case the gate is already <em>open</em>, pressing the button has no effect.
 In case the gate is <em>closed</em>, the effect of pressing the button depends on the amount of cars currently in the parking lot.
 In case the parking lot is full, i.e., <code class="docutils literal notranslate"><span class="pre">counter</span> <span class="pre">≥</span> <span class="pre">100</span></code>, pushing the button has again no effect.
-Otherwise, if the parking lot is not full yet, i.e., <code class="docutils literal notranslate"><span class="pre">counter</span> <span class="pre">&lt;</span> <span class="pre">100</span></code>, then with a probability of 10%, the button will fail and nothing will happen, and, with a probability of 90%, the counter is increased by one and the gate will <em>open</em>.
+Otherwise, if the parking lot is not full yet, i.e., <code class="docutils literal notranslate"><span class="pre">counter</span> <span class="pre">&lt;</span> <span class="pre">100</span></code>, then with a probability of 10%, the button will fail and nothing will happen, and, with a probability of 90%, the counter is incremented by one and the gate will <em>open</em>.
 When the gate is <em>open</em>, a car can <em>enter</em> the parking lot.
 After entering, the gate will be <em>closed</em> again.
 Also, a car can <em>leave</em> the parking lot at any time.
-When a car leaves, the counter will be decremented.</p>
+When a car leaves, the counter will be decremented by one.</p>
 <p><a class="reference internal" href="#driver-automaton"><span class="std std-numref">Fig. 4.3</span></a> shows a JANI automaton modeling a driver who tries to enter the parking lot.
 The driver will try to press the button at most three times and enters the parking lot in case the gate opens.
 If the gate does not open after pressing the button three times, they will give up trying.</p>
@@ -333,11 +301,23 @@ If the gate does not open after pressing the button three times, they will give 
 <img alt="../../_images/driver.drawio.svg" src="../../_images/driver.drawio.svg" /><p class="caption"><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Driver automaton.</span><a class="headerlink" href="#driver-automaton" title="Permalink to this image">¶</a></p>
 </div>
 <p>By synchronizing these automata on their shared labels, <em>press</em> and <em>enter</em>, we obtain an automaton <em>network</em>.
-Using this network, we can for instance model check the probability that the driver will eventually enter the parking lot given that the parking lot is in its initial completely empty state.</p>
+This network has again a semantics in terms of a transition system with probabilistic behavior and non-deterministic choices.
+See <a class="reference internal" href="#parking-lot-state-space"><span class="std std-numref">Fig. 4.4</span></a> for the transition system induced by synchronizing the parking lot and driver automata.</p>
+<div class="figure align-center" id="parking-lot-state-space">
+<img alt="../../_images/parking-lot-state-space.drawio.svg" src="../../_images/parking-lot-state-space.drawio.svg" /><p class="caption"><span class="caption-number">Fig. 4.4 </span><span class="caption-text">State space of the parking lot JANI model.</span><a class="headerlink" href="#parking-lot-state-space" title="Permalink to this image">¶</a></p>
+</div>
+<p>Using this transition system, we can for instance model check the probability that the driver will eventually enter the parking lot given that the parking lot is in its initial completely empty state.</p>
 </div>
 <div class="section" id="momba">
 <h2><span class="section-number">4.1.2. </span>Momba<a class="headerlink" href="#momba" title="Permalink to this headline">¶</a></h2>
-<p>Momba brings to the table an API to work with JANI models.</p>
+<p>Momba provides various APIs for working with JANI models.
+For instance, it provides APIs to construct automata and automata networks.
+It supports declaring variables, constructing expressions over variables, and adding edges to automata.
+This is particularly useful, in case you need to construct a whole family of models programmatically.
+For instance, for the earlier introduced jump’n’run game, we would like to construct a model based on a file specifying a track.
+This goes beyond what is possible with mere parametrization of a model.
+Momba’s API can also be used to write translation tools from or to JANI or implement transformations on a model.
+In the next section, you will use Momba to construct a model of the jump’n’run game for a given track.</p>
 </div>
 </div>
 

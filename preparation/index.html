@@ -156,48 +156,16 @@
      4.2. Model the Game
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tutorial/reference-model/">
-     4.3. Reference Model
-    </a>
-   </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1">
   <a class="reference internal" href="../tutorial/model-validation/">
    5. Model Validation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tutorial/state-space-exploration/">
-     5.1. State Space Exploration
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tutorial/interactive-game/">
-     5.2. Interactive Game
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tutorial/reference-game/">
-     5.3. Reference Implementation
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../tutorial/model-analysis/">
    6. Model Analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../tutorial/takeaways/">
-   7. Takeaways
   </a>
  </li>
 </ul>
@@ -295,18 +263,12 @@ To follow along, you have to install <a class="reference external" href="https:/
 These steps have been successfully tested on Windows 10 and Ubuntu 20.04, however, they should analogously also apply to your favorite Linux distribution or macOS.
 If you want, you can also use the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux</a> (WSL).
 When using WSL you have to install Python and Poetry inside of WSL (we recommend using Ubuntu 20.04 LTS as the distribution so you can follow the steps for Ubuntu).
-Docker Desktop and VS Code should still be installed on Windows.</p>
+VS Code should still be installed on Windows.</p>
 <p>We strongly recommend installing <a class="reference external" href="https://code.visualstudio.com">VS Code</a>, an open-source IDE developed by Microsoft.
 VS Code has great support for <a class="reference external" href="https://python.org">Python</a> supporting auto completion, linters, type checking, and auto formatting.
 While you may be able to participate with another IDE or editor, having the features VS Code provides will make your life much easier.</p>
 <p><strong>We kindly ask you to follow these steps upfront in preparation of the tutorial.</strong></p>
 <p>In case you have any questions, join our <a href="https://gitter.im/koehlma/momba?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/koehlma/momba.svg"></a> or send us an email.</p>
-<div class="tip admonition">
-<p class="admonition-title">Hint</p>
-<p>Installing Docker is optional.
-In case you choose not to install Docker, you will not be able to use <a class="reference external" href="https://www.stormchecker.org/">Storm</a> for model checking.
-Still, you will be able to use <code class="docutils literal notranslate"><span class="pre">mcsta</span></code> of the <a class="reference external" href="https://www.modestchecker.net/">Modest Toolset</a>.</p>
-</div>
 <div class="section" id="ubuntu">
 <h2>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h2>
 <ol>
@@ -334,23 +296,6 @@ If running <code class="docutils literal notranslate"><span class="pre">poetry</
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">poetry</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
-</li>
-<li><p>To install and enable Docker run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo apt-get install -y docker.io
-sudo systemctl enable --now docker
-sudo groupadd -f docker
-sudo usermod -aG docker $USER
-</pre></div>
-</div>
-<p>This will also add a group <code class="docutils literal notranslate"><span class="pre">docker</span></code> and add the current user to it (required to execute <code class="docutils literal notranslate"><span class="pre">docker</span></code>).
-You may need to logout and login again for the changes to take effect.</p>
-<p>To <strong>pull the Docker image required for Storm</strong> run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">movesrwth</span><span class="o">/</span><span class="n">storm</span><span class="p">:</span><span class="n">travis</span>
-</pre></div>
-</div>
-<p>This command will download the required image so that it is already present on the day of the tutorial.
-In case Docker is not running, this command will fail.
-Without Docker, you will not be able to run Storm.</p>
 </li>
 <li><p>To install VS Code from the official sources run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">vscode</span><span class="o">.</span><span class="n">deb</span> <span class="s2">&quot;https://code.visualstudio.com/sha/download?build=stable&amp;os=linux-deb-x64&quot;</span>
@@ -386,15 +331,6 @@ Then run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">poetry</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
-</li>
-<li><p>To install Docker, use the <a class="reference external" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> installer without changing any settings.</p>
-<p>To <strong>pull the Docker image required for Storm</strong> inside a PowerShell run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">movesrwth</span><span class="o">/</span><span class="n">storm</span><span class="p">:</span><span class="n">travis</span>
-</pre></div>
-</div>
-<p>This command will download the required image so that it is already present on the day of the tutorial.
-In case Docker is not running, this command will fail.
-Without Docker, you will not be able to run Storm.</p>
 </li>
 <li><p>To install VS Code, use the <a class="reference external" href="https://code.visualstudio.com/#alt-downloads">official installer</a>.</p></li>
 </ol>
