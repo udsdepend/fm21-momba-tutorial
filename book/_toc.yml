@@ -17,11 +17,6 @@ parts:
     sections:
     - file: tutorial/modeling-with-momba
     - file: tutorial/model-the-game
-    - file: tutorial/reference-model
   - file: tutorial/model-validation
-    sections:
-    - file: tutorial/state-space-exploration
-    - file: tutorial/interactive-game
-    - file: tutorial/reference-game
   - file: tutorial/model-analysis
-  - file: tutorial/takeaways
+  # - file: tutorial/takeaways

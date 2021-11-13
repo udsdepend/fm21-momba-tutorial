@@ -5,7 +5,7 @@ To follow along, you have to install [Python](https://www.python.org/), [Poetry]
 These steps have been successfully tested on Windows 10 and Ubuntu 20.04, however, they should analogously also apply to your favorite Linux distribution or macOS.
 If you want, you can also use the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install) (WSL).
 When using WSL you have to install Python and Poetry inside of WSL (we recommend using Ubuntu 20.04 LTS as the distribution so you can follow the steps for Ubuntu).
-Docker Desktop and VS Code should still be installed on Windows.
+VS Code should still be installed on Windows.
 
 We strongly recommend installing [VS Code](https://code.visualstudio.com), an open-source IDE developed by Microsoft.
 VS Code has great support for [Python](https://python.org) supporting auto completion, linters, type checking, and auto formatting.
@@ -14,15 +14,6 @@ While you may be able to participate with another IDE or editor, having the feat
 **We kindly ask you to follow these steps upfront in preparation of the tutorial.**
 
 In case you have any questions, join our <a href="https://gitter.im/koehlma/momba?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/koehlma/momba.svg"></a> or send us an email.
-
-```{admonition} Hint
-:class: tip
-
-Installing Docker is optional.
-In case you choose not to install Docker, you will not be able to use [Storm](https://www.stormchecker.org/) for model checking.
-Still, you will be able to use `mcsta` of the [Modest Toolset](https://www.modestchecker.net/).
-```
-
 
 
 ## Ubuntu
@@ -50,24 +41,7 @@ Still, you will be able to use `mcsta` of the [Modest Toolset](https://www.modes
     ```
     poetry --version
     ```
-3. To install and enable Docker run:
-    ```
-    sudo apt-get install -y docker.io
-    sudo systemctl enable --now docker
-    sudo groupadd -f docker
-    sudo usermod -aG docker $USER
-    ```
-    This will also add a group `docker` and add the current user to it (required to execute `docker`).
-    You may need to logout and login again for the changes to take effect.
-
-    To **pull the Docker image required for Storm** run:
-    ```
-    docker pull movesrwth/storm:travis
-    ```
-    This command will download the required image so that it is already present on the day of the tutorial.
-    In case Docker is not running, this command will fail.
-    Without Docker, you will not be able to run Storm.
-4. To install VS Code from the official sources run:
+3. To install VS Code from the official sources run:
     ```
     wget -O /tmp/vscode.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
     sudo apt-get install -y /tmp/vscode.deb
@@ -103,13 +77,4 @@ Still, you will be able to use `mcsta` of the [Modest Toolset](https://www.modes
     ```
     poetry --version
     ```
-3. To install Docker, use the [Docker Desktop](https://www.docker.com/products/docker-desktop) installer without changing any settings.
-    
-    To **pull the Docker image required for Storm** inside a PowerShell run:
-    ```
-    docker pull movesrwth/storm:travis
-    ```
-    This command will download the required image so that it is already present on the day of the tutorial.
-    In case Docker is not running, this command will fail.
-    Without Docker, you will not be able to run Storm.
-4. To install VS Code, use the [official installer](https://code.visualstudio.com/#alt-downloads).
+3. To install VS Code, use the [official installer](https://code.visualstudio.com/#alt-downloads).

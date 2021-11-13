@@ -47,11 +47,11 @@ Independent on whether the gate is *open* or *closed*, the driver can always *pr
 In case the gate is already *open*, pressing the button has no effect.
 In case the gate is *closed*, the effect of pressing the button depends on the amount of cars currently in the parking lot.
 In case the parking lot is full, i.e., `counter ≥ 100`, pushing the button has again no effect.
-Otherwise, if the parking lot is not full yet, i.e., `counter < 100`, then with a probability of 10%, the button will fail and nothing will happen, and, with a probability of 90%, the counter is increased by one and the gate will *open*.
+Otherwise, if the parking lot is not full yet, i.e., `counter < 100`, then with a probability of 10%, the button will fail and nothing will happen, and, with a probability of 90%, the counter is incremented by one and the gate will *open*.
 When the gate is *open*, a car can *enter* the parking lot.
 After entering, the gate will be *closed* again.
 Also, a car can *leave* the parking lot at any time.
-When a car leaves, the counter will be decremented.
+When a car leaves, the counter will be decremented by one.
 
 {numref}`driver-automaton` shows a JANI automaton modeling a driver who tries to enter the parking lot.
 The driver will try to press the button at most three times and enters the parking lot in case the gate opens.
@@ -66,9 +66,27 @@ Driver automaton.
 ```
 
 By synchronizing these automata on their shared labels, *press* and *enter*, we obtain an automaton *network*.
-Using this network, we can for instance model check the probability that the driver will eventually enter the parking lot given that the parking lot is in its initial completely empty state.
+This network has again a semantics in terms of a transition system with probabilistic behavior and non-deterministic choices.
+See {numref}`parking-lot-state-space` for the transition system induced by synchronizing the parking lot and driver automata.
+
+```{figure} ./images/parking-lot-state-space.drawio.svg
+---
+name: parking-lot-state-space
+align: center
+---
+State space of the parking lot JANI model.
+```
+
+Using this transition system, we can for instance model check the probability that the driver will eventually enter the parking lot given that the parking lot is in its initial completely empty state.
 
 
 ## Momba
 
-Momba brings to the table an API to work with JANI models.
+Momba provides various APIs for working with JANI models.
+For instance, it provides APIs to construct automata and automata networks.
+It supports declaring variables, constructing expressions over variables, and adding edges to automata.
+This is particularly useful, in case you need to construct a whole family of models programmatically.
+For instance, for the earlier introduced jump'n'run game, we would like to construct a model based on a file specifying a track.
+This goes beyond what is possible with mere parametrization of a model.
+Momba's API can also be used to write translation tools from or to JANI or implement transformations on a model.
+In the next section, you will use Momba to construct a model of the jump'n'run game for a given track.
