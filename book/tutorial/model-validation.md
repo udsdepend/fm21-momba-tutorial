@@ -48,7 +48,9 @@ Having activated the virtual environment, you start the game with:
 ```
 fmracer race tracks/simple.txt
 ```
-This will use the track defined in `tracks/simple.txt`.
+This will launch the game using the track defined in `tracks/simple.txt`.
+You can also use a different track file, if you want.
+Note that your actions may have no effect because the model is noisy.
 
 Using the option `--fail-probability` you can also change the probability with which an action fails.
 
