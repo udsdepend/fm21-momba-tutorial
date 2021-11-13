@@ -91,9 +91,6 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
     # variable `left_action`, `right_action`, and `stay_action` such that we can
     # use them in the following. You may find the following resources helpful:
     # - https://momba.dev/reference/model/context/#context
-    left_action = ...
-    right_action = ...
-    stay_action = ...
 
     # SOLUTION:
     left_action = ctx.create_action_type("left")
@@ -107,7 +104,6 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
     # automaton to a variable such that locations and edges can be added
     # to the automaton in the next steps. For this step, it suffices to
     # just create the automaton itself.
-    automaton = ...
 
     # SOLUTION:
     automaton = ctx.create_automaton(name="Environment")
@@ -125,7 +121,6 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
 
     # TODO: Create an initial location for the automaton and assign it to
     # a variable such that it can be used later.
-    location = ...
 
     # SOLUTION:
     location = automaton.create_location("ready", initial=True)
@@ -171,7 +166,6 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         # track. Hint: You can again use the function `expr`. Analogously to `x`
         # and `track.width` in the function `has_won`, you should pass `y` as well
         # as `track.height` into the expression.
-        out_of_bounds = ...
 
         # SOLUTION:
         out_of_bounds = expr("$y >= $height or $y < 0", y=y, height=track.height)
@@ -183,9 +177,6 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         # obstacle. We will use the `logic_any` function which essentially
         # implements existential quantification. Analogously to above, construct
         # an expression comparing the coordinates.
-        on_obstacle = model.expressions.logic_any(
-            *(expr(...) for obstacle in track.obstacles)
-        )
 
         # SOLUTION:
         on_obstacle = model.expressions.logic_any(
@@ -219,8 +210,6 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         # new position of the player after applying the respective action.
         # The x position is advanced by $1$ in each step and the y position
         # is advanced by `delta`. You again need to use `expr`.
-        new_pos_x = ...
-        new_pos_y = ...
 
         # SOLUTION:
         new_pos_x = expr("pos_x + 1")
@@ -233,7 +222,6 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         # TODO: Create an expression for the probability that the action takes
         # effect. This is $1 - fail_probability$. To this end, you can again
         # use the `expr` function:
-        success_probability = ...
 
         # SOLUTION:
         success_probability = expr(
@@ -243,20 +231,6 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         # TODO: Create the destination where the action takes effect. To this end,
         # you have to use the function `create_destination` of the module `model`:
         # https://momba.dev/reference/model/automata/#momba.model.create_destination
-        success_destination = model.create_destination(
-            # TODO: Pass in the target location `location` and the probability
-            # expression `success_probability` defined above.
-            assignments={
-                # These assignments are executed when transitioning to the
-                # respective destination. We update the variables here.
-                "pos_x": new_pos_x,
-                # TODO: Update the remaining variables `pos_y`, `has_won`, and
-                # `has_crashed` based on the new position. Hint: You want to
-                # use the earlier defined functions `has_won` and `has_crashed`
-                # here to update the variables `has_won` and `has_crashed`.
-                ...: ...,
-            },
-        )
 
         # SOLUTION:
         success_destination = model.create_destination(
@@ -276,7 +250,6 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         # probability passed to the `create_destination` function has to be
         # an expression. To transform a Python value into an expression you
         # can use the function `model.ensure_expr`.
-        fail_destination = ...
 
         # SOLUTION:
         fail_destination = model.create_destination(
@@ -290,16 +263,6 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         )
 
         # Now, it reamins to create the edge for the respective action type.
-        automaton.create_edge(
-            # TODO: Add the arguments for the source location `location`, the
-            # guard of the edge which should be `can_move` such that the edge
-            # is enabled if and only if the player can move, as well as the
-            # earlier defined destinations for this edge.
-            ...,
-            # Momba supports a non-standard JANI feature for value passing. This
-            # is why we have to create an *action pattern* here:
-            action_pattern=action_type.create_pattern(),
-        )
 
         # SOLUTION:
         automaton.create_edge(
