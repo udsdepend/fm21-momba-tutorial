@@ -65,21 +65,11 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
     # modeling context `ctx`. You may find the following resources helpful:
     # - https://momba.dev/reference/model/context/#context
     # - https://momba.dev/reference/model/context/#scope
-
-    # SOLUTION:
-    ctx.global_scope.declare_variable("pos_x", typ=model.types.INT, initial_value=0)
-    ctx.global_scope.declare_variable("pos_y", typ=model.types.INT, initial_value=0)
+    ...
 
     # TODO: In addition to those two variables declare two boolean variables `has_won`
     # and `has_crashed` which should initially be set to `False`.
-
-    # SOLUTION:
-    ctx.global_scope.declare_variable(
-        "has_won", typ=model.types.BOOL, initial_value=False
-    )
-    ctx.global_scope.declare_variable(
-        "has_crashed", typ=model.types.BOOL, initial_value=False
-    )
+    ...
 
     # TODO: The player needs to be able to do something. To this end, we have to
     # declare the *action types* it can perform. An action type is a label on a
@@ -91,22 +81,18 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
     # variable `left_action`, `right_action`, and `stay_action` such that we can
     # use them in the following. You may find the following resources helpful:
     # - https://momba.dev/reference/model/context/#context
-
-    # SOLUTION:
-    left_action = ctx.create_action_type("left")
-    right_action = ctx.create_action_type("right")
-    stay_action = ctx.create_action_type("stay")
+    left_action = ...
+    right_action = ...
+    stay_action = ...
 
     # TODO: The automaton network will consist of a single automaton which
-    # contains nondeterminism as far as the players actions are concerned.
+    # contains nondeterminism as far as the player's actions are concerned.
     # Create this automaton. Automata are created on the modeling context
     # `ctx` using the method `create_automaton`. You should assign the
     # automaton to a variable such that locations and edges can be added
     # to the automaton in the next steps. For this step, it suffices to
     # just create the automaton itself.
-
-    # SOLUTION:
-    automaton = ctx.create_automaton(name="Environment")
+    automaton = ...
 
     # You now have to model the actual automaton. Depending on which of the
     # actions is taken by the player, the automaton should advance the
@@ -121,29 +107,27 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
 
     # TODO: Create an initial location for the automaton and assign it to
     # a variable such that it can be used later.
-
-    # SOLUTION:
-    location = automaton.create_location("ready", initial=True)
+    location = ...
 
     # Momba allows you to write JANI expressions using a concise syntax.
     # To this end, the function `expr` (imported above) can be used. The
     # following line constructs an expression which evaluates to a boolean
     # indicating whether the player can move in a given state:
     can_move = expr("not has_won and not has_crashed")
-    # Clearly, when the player has not already or crashed, then it should
-    # be able to move. We are going to use this expression in a guard for
-    # the edges of the automation. These edges should be enabled only if
-    # the player can actually still move.
+    # Clearly, when the player has not already won or crashed, then it
+    # should be able to move. We are going to use this expression in a
+    # guard for the edges of the automation. These edges should be
+    # enabled only if the player can actually still move.
     #
     # The grammer for the expressions is straightforward. A reference can
     # be found here: https://momba.dev/incubator/moml/grammar/. The syntax
     # for expressions is defined by the `<expression>` nonterminal.
 
-    # In our model we will need to update the variables `has_won` and
+    # In our model, we will need to update the variables `has_won` and
     # `has_crashed` based on whether the player wins or crashes with
     # a given move. To this end, we define two auxiliary functions which
-    # take coordinates and determine whether the player wins or crashes
-    # when being at those coordinates.
+    # take coordinates and determine whether the player has won or has
+    # crashed when being at those coordinates.
 
     def has_won(x: model.Expression) -> model.Expression:
         """Constructs an expression for whether the player won."""
@@ -156,8 +140,8 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
     def has_crashed(x: model.Expression, y: model.Expression) -> model.Expression:
         """Constructs an expression for whether the player crashed."""
 
-        # The player crashes if and only if it drives of the track at the sides or
-        # crashes into an obstacle. We construct expressions for each of these
+        # The player crashes if and only if the drive off the track at the sides
+        # or crashes into an obstacle. We construct expressions for each of these
         # cases individually and later combine them with an `or`.
 
         # TODO: Construct an expression checking whether the player has moved out
@@ -166,9 +150,7 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         # track. Hint: You can again use the function `expr`. Analogously to `x`
         # and `track.width` in the function `has_won`, you should pass `y` as well
         # as `track.height` into the expression.
-
-        # SOLUTION:
-        out_of_bounds = expr("$y >= $height or $y < 0", y=y, height=track.height)
+        out_of_bounds = ...
 
         # TODO: Now, construct an expression for checking whether the player
         # has crashed into an obstacle. To this end, iterate over the obstacles
@@ -177,19 +159,8 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         # obstacle. We will use the `logic_any` function which essentially
         # implements existential quantification. Analogously to above, construct
         # an expression comparing the coordinates.
-
-        # SOLUTION:
         on_obstacle = model.expressions.logic_any(
-            *(
-                expr(
-                    "$x == $obstacle_x and $y == $obstacle_y",
-                    x=x,
-                    y=y,
-                    obstacle_x=obstacle.x,
-                    obstacle_y=obstacle.y,
-                )
-                for obstacle in track.obstacles
-            )
+            *(expr(...) for obstacle in track.obstacles)
         )
 
         # Finally, we use `logic_or` to combine both expressions.
@@ -210,72 +181,81 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         # new position of the player after applying the respective action.
         # The x position is advanced by $1$ in each step and the y position
         # is advanced by `delta`. You again need to use `expr`.
-
-        # SOLUTION:
-        new_pos_x = expr("pos_x + 1")
-        new_pos_y = expr("pos_y + $delta", delta=delta)
+        new_pos_x = ...
+        new_pos_y = ...
 
         # We are now ready to create an edge for the respective action type. This
         # edge needs two probabilistic destinations, one for when the action has an
-        # effect and one for when the action has no effect.
+        # effect and one for when the action fails.
 
         # TODO: Create an expression for the probability that the action takes
         # effect. This is $1 - fail_probability$. To this end, you can again
         # use the `expr` function:
-
-        # SOLUTION:
-        success_probability = expr(
-            "1 - $fail_probability", fail_probability=fail_probability
-        )
+        success_probability = ...
 
         # TODO: Create the destination where the action takes effect. To this end,
         # you have to use the function `create_destination` of the module `model`:
         # https://momba.dev/reference/model/automata/#momba.model.create_destination
-
-        # SOLUTION:
         success_destination = model.create_destination(
-            location,
-            probability=success_probability,
+            # TODO: Pass in the target location `location` and the probability
+            # expression `success_probability` defined above.
+            ...,
             assignments={
+                # These assignments are executed when transitioning to the
+                # respective destination. We update the variables here.
                 "pos_x": new_pos_x,
-                "pos_y": new_pos_y,
-                "has_won": has_won(new_pos_x),
-                "has_crashed": has_crashed(new_pos_x, new_pos_y),
+                # TODO: Update the remaining variables `pos_y`, `has_won`, and
+                # `has_crashed` based on the new position. Hint: You want to
+                # use the earlier defined functions `has_won` and `has_crashed`
+                # here to update the variables `has_won` and `has_crashed`.
+                ...: ...,
             },
         )
 
-        # TODO: Construct a destination for when the action takes no effect.
-        # In this case, the x coordinate should be updated to `new_pos_x`.
-        # However, the y coordinate should stay as it is. Note that the
-        # probability passed to the `create_destination` function has to be
-        # an expression. To transform a Python value into an expression you
-        # can use the function `model.ensure_expr`.
-
-        # SOLUTION:
-        fail_destination = model.create_destination(
-            location,
-            probability=model.ensure_expr(fail_probability),
-            assignments={
-                "pos_x": new_pos_x,
-                "has_won": has_won(new_pos_x),
-                "has_crashed": has_crashed(new_pos_x, expr("pos_y")),
-            },
-        )
+        # TODO: Construct a destination for when the action fails. In this
+        # case, the x coordinate should be updated to `new_pos_x`. However,
+        # the y coordinate should stay as it is. Note that the probability
+        # passed to the `create_destination` function has to be an expression.
+        # To transform a Python value into an expression you can use the
+        # function `model.ensure_expr`.
+        fail_destination = ...
 
         # Now, it reamins to create the edge for the respective action type.
-
-        # SOLUTION:
         automaton.create_edge(
-            location,
+            # TODO: Add the arguments for the source location `location`, the
+            # guard of the edge which should be `can_move` such that the edge
+            # is enabled if and only if the player can move, as well as the
+            # earlier defined destinations for this edge.
+            ...,
+            # Momba supports a non-standard JANI feature for value passing. This
+            # is why we have to create an *action pattern* here:
             action_pattern=action_type.create_pattern(),
-            guard=can_move,
-            destinations=[success_destination, fail_destination],
         )
 
-    instance = automaton.create_instance()
+    # Congratulations, you successfully constructed the JANI automaton
+    # for the game. To get a complete JANI model, we now have to create
+    # an automaton network.
 
-    network = ctx.create_network()
+    # TODO: Create an automaton network. Hint: You have to use the function
+    # `create_network` on the modeling context.
+    network = ...
+
+    # To the created network, we can now add *instances* of automata. This
+    # allows instantating the same automaton multiple times for a given
+    # network. Instances are created with `create_instance` and can then
+    # be added to the network.
+    instance = automaton.create_instance()
     network.add_instance(instance)
+
+    # Finally, we have to declare *synchronization vectors*. These are used
+    # to contrain how the automata instances of the network can synchronize
+    # with each other. This is done by using the function `create_link` which
+    # takes a mapping from instances to action (patterns) and an optional
+    # result action. Intuitively, if the automaton performs a certain action
+    # such as *left*, *right*, or *stay*, then the final transition system
+    # for the network should perform the same action. Hence, the result action
+    # and the action with which the just created instance participates in
+    # a synchronization are identical.
     for action_type in moves.keys():
         network.create_link(
             {instance: action_type.create_pattern()},

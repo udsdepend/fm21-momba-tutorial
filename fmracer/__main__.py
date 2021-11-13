@@ -1,3 +1,7 @@
+# -*- coding:utf-8 -*-
+
+"""Command line tool."""
+
 import typing as t
 
 import functools
@@ -8,15 +12,7 @@ import click
 
 from asciimatics.screen import Screen
 
-from momba import engine
-from momba.tools import modest, storm_docker
-from momba.moml import expr, prop
-
 from . import analysis, model, interactive
-
-
-CHECKERS = [modest.get_checker(accept_license=True), storm_docker.checker]
-
 
 warnings.simplefilter("ignore")
 
@@ -29,7 +25,8 @@ def main():
 @main.command()
 @click.argument("tracks", metavar="TRACK", type=pathlib.Path, required=True, nargs=-1)
 @click.option("--resolution", type=int, default=10)
-def check(tracks: t.Sequence[pathlib.Path], resolution: int):
+def analyze(tracks: t.Sequence[pathlib.Path], resolution: int):
+    """Analyze the winning probabilities for the given tracks."""
     analysis.analyze(
         [(track.stem, model.Track.from_path(track)) for track in tracks], resolution
     )
@@ -39,6 +36,7 @@ def check(tracks: t.Sequence[pathlib.Path], resolution: int):
 @click.argument("track", type=pathlib.Path)
 @click.option("--fail-probability", type=float, default=0.4)
 def race(track: pathlib.Path, fail_probability: float):
+    """Start the interactive simulation of the game."""
     Screen.wrapper(
         functools.partial(
             interactive.game,
