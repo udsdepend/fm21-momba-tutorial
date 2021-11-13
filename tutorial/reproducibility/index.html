@@ -310,7 +310,7 @@ The version 4.0 might include backwards incompatibilities, hence, the version sh
 Also, we are using features introduced with Python 3.8, so, the version should be at least 3.8.</p>
 <p>As you may have noticed, Momba is not yet a dependency of the project.
 To <strong>add Momba as a dependency</strong> run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add -E engine -E docker momba
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add -E engine momba
 </pre></div>
 </div>
 <p>Running this command will add Momba as a dependency to the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file:</p>
@@ -318,8 +318,7 @@ To <strong>add Momba as a dependency</strong> run:</p>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">-E</span></code> flag enables optional <em>extras</em> for the package to be installed.
-The <code class="docutils literal notranslate"><span class="pre">engine</span></code> extra of Momba contains the state space exploration engine we will be using for the interactive model visualization.
-The <code class="docutils literal notranslate"><span class="pre">docker</span></code> extra of Momba enables support for running Storm through Docker.</p>
+The <code class="docutils literal notranslate"><span class="pre">engine</span></code> extra of Momba contains the state space exploration engine we will be using for the interactive model visualization.</p>
 <p>Again, the caret <code class="docutils literal notranslate"><span class="pre">^</span></code> in <code class="docutils literal notranslate"><span class="pre">^0.4.2</span></code> specifies that we want a version of Momba that is at least <code class="docutils literal notranslate"><span class="pre">0.4.2</span></code> but less than <code class="docutils literal notranslate"><span class="pre">0.5.0</span></code>.
 Introducing breaking changes requires increasing the minor version (i.e., <code class="docutils literal notranslate"><span class="pre">4</span></code> to <code class="docutils literal notranslate"><span class="pre">5</span></code> in this case) when the version number starts with <code class="docutils literal notranslate"><span class="pre">0</span></code> as is the case here.
 This kind of guaranteeing compatibility between versions is known as <a class="reference external" href="https://semver.org/"><em>semantic versioning</em></a>.
