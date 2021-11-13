@@ -56,7 +56,7 @@ Also, we are using features introduced with Python 3.8, so, the version should b
 As you may have noticed, Momba is not yet a dependency of the project.
 To **add Momba as a dependency** run:
 ```bash
-poetry add -E engine -E docker momba
+poetry add -E engine momba
 ```
 
 Running this command will add Momba as a dependency to the `pyproject.toml` file:
@@ -66,7 +66,6 @@ momba = {version = "^0.4.2", extras = ["engine", "docker"]}
 
 The `-E` flag enables optional *extras* for the package to be installed.
 The `engine` extra of Momba contains the state space exploration engine we will be using for the interactive model visualization.
-The `docker` extra of Momba enables support for running Storm through Docker.
 
 Again, the caret `^` in `^0.4.2` specifies that we want a version of Momba that is at least `0.4.2` but less than `0.5.0`.
 Introducing breaking changes requires increasing the minor version (i.e., `4` to `5` in this case) when the version number starts with `0` as is the case here.
