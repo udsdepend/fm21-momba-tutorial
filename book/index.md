@@ -28,7 +28,7 @@ You do not need to do anything upfront besides [preparing your system](preparati
 
 The hands-on experience will be based on the example of a jump'n'run game where a player has to move from left to right at a constant speed while avoiding obstacles by moving up or down.
 The actions of the player are subject to probabilistic noise, i.e., not every action has an effect and the player may continue moving straight instead of moving up or down.
-You will construct a formal model based on a map of the game, write an interactive simulation and visualization based on the model using Momba's explicit state space exploration engine, and analyze the model with [The Modest Toolset](https://modestchecker.org).
+You will construct a formal model based on a map of the game, write an interactive simulation and visualization based on the model using Momba's explicit state space exploration engine, and analyze the model with the [Modest Toolset](https://modestchecker.org).
 We provide you with a project skeleton for the example.
 
 
