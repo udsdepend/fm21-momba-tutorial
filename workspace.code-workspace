@@ -1,0 +1,35 @@
+{
+    "folders": [
+        {
+            "name": "Momba Tutorial",
+            "path": "."
+        }
+    ],
+    "extensions": {
+        "recommendations": [
+            "bungcip.better-toml",
+            "ms-python.vscode-pylance",
+            "ms-python.python",
+            "streetsidesoftware.code-spell-checker"
+        ]
+    },
+    "settings": {
+        "python.linting.flake8Enabled": true,
+        "python.linting.mypyEnabled": true,
+        "python.formatting.provider": "black",
+        "python.terminal.activateEnvironment": true,
+        "[python]": {
+            "editor.rulers": [
+                99
+            ],
+            "editor.formatOnSave": true
+        },
+        "cSpell.words": [
+            "asciimatics",
+            "fmracer",
+            "JANI",
+            "momba",
+            "moml"
+        ]
+    }
+}
