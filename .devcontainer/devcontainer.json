@@ -1,0 +1,22 @@
+{
+	"name": "Python 3",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "..",
+		"args": {
+			"VARIANT": "3.9-bullseye",
+			"NODE_VERSION": "none"
+		}
+	},
+	
+	"settings": { 
+		"python.defaultInterpreterPath": "/usr/local/bin/python",
+	},
+
+	"extensions": [
+		"ms-python.python",
+		"ms-python.vscode-pylance"
+	],
+
+	"remoteUser": "vscode"
+}
