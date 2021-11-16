@@ -1,5 +1,9 @@
 # Prepare Your System
 
+```{important}
+Please wait until the 18th of November before following these steps. We are still in the process of optimizing them for the tutorial.
+```
+
 This page will guide you through the process of setting up your system such that you can follow the tutorial.
 To follow along, you have to install [Python](https://www.python.org/), [Poetry](https://python-poetry.org/), [Docker](https://docker.io), and [VS Code](https://code.visualstudio.com).
 These steps have been successfully tested on Windows 10 and Ubuntu 20.04, however, they should analogously also apply to your favorite Linux distribution or macOS.
