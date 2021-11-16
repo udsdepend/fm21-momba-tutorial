@@ -8,6 +8,19 @@ The following steps have been successfully tested on Windows 10 and Ubuntu 21.10
 In case you have any questions, join our <a href="https://gitter.im/koehlma/momba?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/koehlma/momba.svg"></a> or send us an email.
 
 
+## Windows
+
+1. To install Docker, use the [Docker Desktop](https://www.docker.com/products/docker-desktop) installer without changing any settings.
+    
+    To **pull the Docker image required for the tutorial** run in a PowerShell:
+    ```
+    docker pull mcr.microsoft.com/vscode/devcontainers/python:0-3.9-bullseye
+    ```
+    This command will download the required image so that it is already present on the day of the tutorial.
+    In case Docker is not properly set up, this command will fail.
+2. To install VS Code, use the [official installer](https://code.visualstudio.com/#alt-downloads).
+
+
 ## Ubuntu
 
 1. To install and enable Docker run in the terminal of your choice:
@@ -32,16 +45,3 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
     sudo apt-get install -y /tmp/vscode.deb
     ```
     Note that this will automatically add an APT repository for future automatic updates.
-
-
-## Windows
-
-1. To install Docker, use the [Docker Desktop](https://www.docker.com/products/docker-desktop) installer without changing any settings.
-    
-    To **pull the Docker image required for the tutorial** run in a PowerShell:
-    ```
-    docker pull mcr.microsoft.com/vscode/devcontainers/python:0-3.9-bullseye
-    ```
-    This command will download the required image so that it is already present on the day of the tutorial.
-    In case Docker is not properly set up, this command will fail.
-2. To install VS Code, use the [official installer](https://code.visualstudio.com/#alt-downloads).
