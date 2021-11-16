@@ -10,7 +10,7 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
 
 ## Ubuntu
 
-1. To install and enable Docker run:
+1. To install and enable Docker run in the terminal of your choice:
     ```
     sudo apt-get install -y docker.io
     sudo systemctl enable --now docker
@@ -38,7 +38,7 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
 
 1. To install Docker, use the [Docker Desktop](https://www.docker.com/products/docker-desktop) installer without changing any settings.
     
-    To **pull the Docker image required for the tutorial** run:
+    To **pull the Docker image required for the tutorial** run in a PowerShell:
     ```
     docker pull mcr.microsoft.com/vscode/devcontainers/python:0-3.9-bullseye
     ```
