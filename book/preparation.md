@@ -65,6 +65,7 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
     In case Python is already installed on your system, we trust that you know how to adapt the following steps to work with the existing installation.
     If you are in doubt, you may want to remove the existing installation and reinstall it as described here.
     This ensures that everything works as expected.
+3. You also need to install the [*Microsoft C++ Build Tools*](https://visualstudio.microsoft.com/visual-cpp-build-tools/).
 2. We will be using [Poetry](https://python-poetry.org/) for dependency management.
 
     Assuming you have installed Python 3.9, open a PowerShell as administrator.
