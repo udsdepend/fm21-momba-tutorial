@@ -61,19 +61,19 @@ poetry add -E engine momba
 
 Running this command will add Momba as a dependency to the `pyproject.toml` file:
 ```toml
-momba = {version = "^0.4.2", extras = ["engine", "docker"]}
+momba = {version = "^0.5.4", extras = ["engine"]}
 ```
 
 The `-E` flag enables optional *extras* for the package to be installed.
 The `engine` extra of Momba contains the state space exploration engine we will be using for the interactive model visualization.
 
-Again, the caret `^` in `^0.4.2` specifies that we want a version of Momba that is at least `0.4.2` but less than `0.5.0`.
-Introducing breaking changes requires increasing the minor version (i.e., `4` to `5` in this case) when the version number starts with `0` as is the case here.
+Again, the caret `^` in `^0.5.4` specifies that we want a version of Momba that is at least `0.5.4` but less than `0.6.0`.
+Introducing breaking changes requires increasing the minor version (i.e., `5` to `6` in this case) when the version number starts with `0` as is the case here.
 This kind of guaranteeing compatibility between versions is known as [*semantic versioning*](https://semver.org/).
 Note that *experimental features* are often excluded from semantic versioning and sometimes compatibility is broken by accident without changing the version number accordingly.
 For these cases, it might make sense to explicitly *pin* a precise version with `==` like so:
 ```toml
-momba = {version = "==0.4.2", extras = ["engine", "docker"]} 
+momba = {version = "==0.5.4", extras = ["engine"]} 
 ```
 
 Adding a dependency with `poetry add` also modifies the `poetry.lock` file.

@@ -30,14 +30,16 @@ After opening the workspace, VS Code should ask you whether you want to install 
 :align: center
 ```
 
-The workspace comes with four recommended extensions for spell checking, Python support, and [TOML](https://toml.io/en/) support.
-TOML is the file format used to configure a Python project.
+The workspace comes with one recommended extension: [*Remote - Containers*](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+This extension allows using a Docker image to specify a reproducible and versioned development environment.
 More about that later.
-Please click on *Install* to install the recommended extensions.
+Please click on *Install* to install the recommended extension.
 
-Should VS Code not ask you to install the recommended extensions, you probably have them installed already.
+Should VS Code not ask you to install the recommended extensions, you probably have the extension installed already.
 To view the recommended extensions of the workspace and check whether they are installed, open the command palette by pressing `F1` and then choose *Extensions: Show Recommended Extensions*.
 
-The workspace also contains settings for the example project.
+After installing the *Remote - Containers* extension you have to reopen the workspace within a *development container*.
+To this end, open the command palette by pressing `F1` and then choose *Remote-Containers: Reopen in Container*.
+This will reload the window, create a Docker container with Python and all relevant tools installed, and then opens the workspace in this container.
 
 Congratulations, you are now fully prepared for the tutorial. 🎉
