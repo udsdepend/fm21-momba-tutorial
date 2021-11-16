@@ -257,13 +257,15 @@ To open the workspace run:</p>
 <p>Then, choose the <code class="docutils literal notranslate"><span class="pre">workspace.code-workspace</span></code> file to open the workspace.</p>
 <p>After opening the workspace, VS Code should ask you whether you want to install the <em>recommended extensions</em>:</p>
 <img alt="../../_images/vscode-install-extensions.png" class="align-center" id="id1" src="../../_images/vscode-install-extensions.png" />
-<p>The workspace comes with four recommended extensions for spell checking, Python support, and <a class="reference external" href="https://toml.io/en/">TOML</a> support.
-TOML is the file format used to configure a Python project.
+<p>The workspace comes with one recommended extension: <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers"><em>Remote - Containers</em></a>.
+This extension allows using a Docker image to specify a reproducible and versioned development environment.
 More about that later.
-Please click on <em>Install</em> to install the recommended extensions.</p>
-<p>Should VS Code not ask you to install the recommended extensions, you probably have them installed already.
+Please click on <em>Install</em> to install the recommended extension.</p>
+<p>Should VS Code not ask you to install the recommended extensions, you probably have the extension installed already.
 To view the recommended extensions of the workspace and check whether they are installed, open the command palette by pressing <code class="docutils literal notranslate"><span class="pre">F1</span></code> and then choose <em>Extensions: Show Recommended Extensions</em>.</p>
-<p>The workspace also contains settings for the example project.</p>
+<p>After installing the <em>Remote - Containers</em> extension you have to reopen the workspace within a <em>development container</em>.
+To this end, open the command palette by pressing <code class="docutils literal notranslate"><span class="pre">F1</span></code> and then choose <em>Remote-Containers: Reopen in Container</em>.
+This will reload the window, create a Docker container with Python and all relevant tools installed, and then opens the workspace in this container.</p>
 <p>Congratulations, you are now fully prepared for the tutorial. 🎉</p>
 </div>
 

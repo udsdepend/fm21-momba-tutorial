@@ -262,44 +262,29 @@
 <p class="admonition-title">Important</p>
 <p>Please wait until the 18th of November before following these steps. We are still in the process of optimizing them for the tutorial.</p>
 </div>
-<p>This page will guide you through the process of setting up your system such that you can follow the tutorial.
-To follow along, you have to install <a class="reference external" href="https://www.python.org/">Python</a>, <a class="reference external" href="https://python-poetry.org/">Poetry</a>, <a class="reference external" href="https://docker.io">Docker</a>, and <a class="reference external" href="https://code.visualstudio.com">VS Code</a>.
-These steps have been successfully tested on Windows 10 and Ubuntu 20.04, however, they should analogously also apply to your favorite Linux distribution or macOS.
-If you want, you can also use the <a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux</a> (WSL).
-When using WSL you have to install Python and Poetry inside of WSL (we recommend using Ubuntu 20.04 LTS as the distribution so you can follow the steps for Ubuntu).
-VS Code should still be installed on Windows.</p>
-<p>We strongly recommend installing <a class="reference external" href="https://code.visualstudio.com">VS Code</a>, an open-source IDE developed by Microsoft.
-VS Code has great support for <a class="reference external" href="https://python.org">Python</a> supporting auto completion, linters, type checking, and auto formatting.
-While you may be able to participate with another IDE or editor, having the features VS Code provides will make your life much easier.</p>
 <p><strong>We kindly ask you to follow these steps upfront in preparation of the tutorial.</strong></p>
-<p>In case you have any questions, join our <a href="https://gitter.im/koehlma/momba?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/koehlma/momba.svg"></a> or send us an email.</p>
+<p>This page will guide you through the process of setting up your system such that you can follow the tutorial.
+To follow along, you have to install <a class="reference external" href="https://docker.io">Docker</a> and <a class="reference external" href="https://code.visualstudio.com">VS Code</a>.
+The following steps have been successfully tested on Windows 10 and Ubuntu 20.04, however, they should analogously apply to your favorite Linux distribution or macOS.
+In case you have any questions, join our <a href="https://gitter.im/koehlma/momba?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/koehlma/momba.svg"></a> or send us an email.</p>
 <div class="section" id="ubuntu">
 <h2>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this headline">¶</a></h2>
 <ol>
-<li><p>We recommend <strong>installing Python 3.9</strong> from the <em>Deadsnakes PPA</em>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="o">-</span><span class="n">y</span> <span class="n">ppa</span><span class="p">:</span><span class="n">deadsnakes</span><span class="o">/</span><span class="n">ppa</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span> <span class="o">-</span><span class="n">y</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">python3</span><span class="mf">.9</span> <span class="n">python3</span><span class="mf">.9</span><span class="o">-</span><span class="n">dev</span> <span class="n">python3</span><span class="mf">.9</span><span class="o">-</span><span class="n">venv</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span>
+<li><p>To install and enable Docker run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo apt-get install -y docker.io
+sudo systemctl enable --now docker
+sudo groupadd -f docker
+sudo usermod -aG docker $USER
 </pre></div>
 </div>
-<p>Note that Momba requires at least Python version 3.8. Older versions will <strong>not</strong> work.</p>
-</li>
-<li><p>We will be using <a class="reference external" href="https://python-poetry.org/">Poetry</a> for dependency management.
-Assuming you have installed Python 3.9 run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span><span class="mf">.9</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="n">poetry</span>
+<p>This will also add a group <code class="docutils literal notranslate"><span class="pre">docker</span></code> and add the current user to it (required to execute <code class="docutils literal notranslate"><span class="pre">docker</span></code>).
+You may need to logout and login again for the changes to take effect.</p>
+<p>To <strong>pull the Docker image required for the tutorial</strong> run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">mcr</span><span class="o">.</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vscode</span><span class="o">/</span><span class="n">devcontainers</span><span class="o">/</span><span class="n">python</span><span class="p">:</span><span class="mi">0</span><span class="o">-</span><span class="mf">3.9</span><span class="o">-</span><span class="n">bullseye</span>
 </pre></div>
 </div>
-<p>Note that this will install Poetry for the current user only.
-To use poetry the <code class="docutils literal notranslate"><span class="pre">bin</span></code> directory of the user (<code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code>) needs to be in the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable.
-This should be the case by default for shells other than Bash.
-If running <code class="docutils literal notranslate"><span class="pre">poetry</span></code> fails, you can extend the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> variable for the current user by executing (requires restarting the shell to take effect):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s1">&#39;PATH=&quot;$HOME/.local/bin:$PATH&quot;&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bashrc</span>
-</pre></div>
-</div>
-<p>Please <strong>check that Poetry works</strong> with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">poetry</span> <span class="o">--</span><span class="n">version</span>
-</pre></div>
-</div>
+<p>This command will download the required image so that it is already present on the day of the tutorial.
+In case Docker is not properly set up, this command will fail.</p>
 </li>
 <li><p>To install VS Code from the official sources run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">vscode</span><span class="o">.</span><span class="n">deb</span> <span class="s2">&quot;https://code.visualstudio.com/sha/download?build=stable&amp;os=linux-deb-x64&quot;</span>
@@ -313,29 +298,13 @@ If running <code class="docutils literal notranslate"><span class="pre">poetry</
 <div class="section" id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
 <ol>
-<li><p>We recommend <strong>installing Python 3.9</strong> using the <a class="reference external" href="https://www.python.org/ftp/python/3.9.7/python-3.9.7-amd64.exe">official installer</a>:
-On the first page of the installer, choose <em>Customize installation</em>.
-When presented with the <em>Optional Features</em> just hit <em>Next</em> without changing anything.
-In the next step, the <em>Advanced Options</em> will show up.
-Please configure them as follows:</p>
-<img alt="../_images/windows-python-advanced-options.png" class="align-center" id="windows-python-advanced-options" src="../_images/windows-python-advanced-options.png" />
-<p>On the final page of the installer, select <em>Disable path length limit</em> and then <em>Close</em> the installer.</p>
-<p>In case Python is already installed on your system, we trust that you know how to adapt the following steps to work with the existing installation.
-If you are in doubt, you may want to remove the existing installation and reinstall it as described here.
-This ensures that everything works as expected.</p>
-</li>
-<li><p>You also need to install the <a class="reference external" href="https://visualstudio.microsoft.com/visual-cpp-build-tools/"><em>Microsoft C++ Build Tools</em></a>.</p></li>
-<li><p>We will be using <a class="reference external" href="https://python-poetry.org/">Poetry</a> for dependency management.</p>
-<p>Assuming you have installed Python 3.9, open a PowerShell as administrator.
-Right click on the start menu and select <em>Windows PowerShell (Admin)</em>.
-Then run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">poetry</span>
+<li><p>To install Docker, use the <a class="reference external" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> installer without changing any settings.</p>
+<p>To <strong>pull the Docker image required for the tutorial</strong> run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">mcr</span><span class="o">.</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vscode</span><span class="o">/</span><span class="n">devcontainers</span><span class="o">/</span><span class="n">python</span><span class="p">:</span><span class="mi">0</span><span class="o">-</span><span class="mf">3.9</span><span class="o">-</span><span class="n">bullseye</span>
 </pre></div>
 </div>
-<p>Please <strong>check that Poetry works</strong> with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">poetry</span> <span class="o">--</span><span class="n">version</span>
-</pre></div>
-</div>
+<p>This command will download the required image so that it is already present on the day of the tutorial.
+In case Docker is not properly set up, this command will fail.</p>
 </li>
 <li><p>To install VS Code, use the <a class="reference external" href="https://code.visualstudio.com/#alt-downloads">official installer</a>.</p></li>
 </ol>
