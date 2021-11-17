@@ -18,15 +18,28 @@ Alternatively, you can also open the workspace from within VS Code: To this end,
 
 ```{image} ./images/vscode-open-workspace.png
 :name: vscode-open-workspace
+:scale: 80%
 :align: center
 ```
 
 Then, choose the `workspace.code-workspace` file to open the workspace.
 
+VS Code will now probably ask you whether you trust the authors of the workspace:
+
+```{image} ./images/vscode-workspace-trust.png
+:name: vscode-workspace-trust
+:scale: 70%
+:align: center
+```
+
+This is a security precaution because the workspace may configure VS Code to execute arbitrary code on your system.
+Please trust the workspace by clicking *Yes, I trust the authors*.
+
 After opening the workspace, VS Code should ask you whether you want to install the *recommended extensions*:
 
 ```{image} ./images/vscode-install-extensions.png
 :name: vscode-open-workspace
+:scale: 80%
 :align: center
 ```
 
@@ -41,5 +54,9 @@ To view the recommended extensions of the workspace and check whether they are i
 After installing the *Remote - Containers* extension you have to reopen the workspace within a *development container*.
 To this end, open the command palette by pressing `F1` and then choose *Remote-Containers: Reopen in Container*.
 This will reload the window, create a Docker container with Python and all relevant tools installed, and then opens the workspace in this container.
+
+After opening the container, VS Code will install some additional extensions into the container.
+After installing these extensions, it may prompt you to reload the window.
+Please do so when prompted.
 
 Congratulations, you are now fully prepared for the tutorial. 🎉
