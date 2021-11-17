@@ -4,8 +4,6 @@ import typing as t
 
 import click
 
-import matplotlib.pyplot as plt
-
 from momba.moml import prop
 
 # Import the Modest Toolset which we are using for the analysis.
@@ -21,6 +19,9 @@ PROPERTIES = {"goal": prop("min({ Pmax(F(has_won)) | initial })")}
 
 
 def analyze(tracks: t.Sequence[t.Tuple[str, model.Track]], resolution: int = 10):
+    # Import Matplotlib, a plotting library for Python.
+    import matplotlib.pyplot as plt
+
     # We first have to construct an instance of the model checker. This
     # will automatically download the Modest Toolset for your platform
     # and store it such that it can be invoked by Momba.
