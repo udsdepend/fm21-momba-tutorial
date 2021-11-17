@@ -28,7 +28,7 @@ Parking lot ticket machine and gate.
 ```
 
 {numref}`parking-lot-automaton` shows a JANI automaton modeling the parking lot and ticket machine.
-This automaton has two *locations*, *closed* and *open* corresponding to the gate being closed and open, respectively.
+This automaton has two *locations*, *closed* and *open*, corresponding to the gate being closed and open, respectively.
 These locations are connected by *edges*.
 Edges are *labeled*.
 In this case, there are three labels: *press*, *enter*, and *leave*.
@@ -66,7 +66,7 @@ Driver automaton.
 ```
 
 By synchronizing these automata on their shared labels, *press* and *enter*, we obtain an automaton *network*.
-This network has again a semantics in terms of a transition system with probabilistic behavior and non-deterministic choices.
+This network again has a semantics in terms of a transition system with probabilistic behavior and non-deterministic choices.
 See {numref}`parking-lot-state-space` for the transition system induced by synchronizing the parking lot and driver automata.
 
 ```{figure} ./images/parking-lot-state-space.drawio.svg

@@ -15,7 +15,7 @@ The execution environment has to be mostly isolated from the existing system of 
 With [virtual environments](https://docs.python.org/3/tutorial/venv.html), Python has such isolation builtin.
 In addition, we have a completely isolated Python installation in the development container.
 
-Poetry will manage a virtual environment for you project.
+Poetry will manage a virtual environment for your project.
 To **set up a virtual environment for the example project**, open a terminal (*View → Terminal* or ``Ctrl + `​``) in VS Code and run:
 ```bash
 poetry install
@@ -41,7 +41,7 @@ So, how do you manage this virtual environment with Poetry?
 ## Dependency Management
 
 [PEP 518](https://www.python.org/dev/peps/pep-0518/) partially specifies the format of a `pyproject.toml` file.
-This file defines how your project is going to be build and what dependencies in which versions are required.
+This file defines how your project is going to be built and what dependencies in which versions are required.
 
 The dependencies are specified in the `tool.poetry.dependencies` section.
 For our example:

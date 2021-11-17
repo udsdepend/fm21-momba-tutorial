@@ -276,7 +276,7 @@ As you can see from the picture, the ticket machine is quite old, thus the butto
 <img alt="../../_images/parking-lot-image.drawio.svg" src="../../_images/parking-lot-image.drawio.svg" /><p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Parking lot ticket machine and gate.</span><a class="headerlink" href="#parking-lot-image" title="Permalink to this image">¶</a></p>
 </div>
 <p><a class="reference internal" href="#parking-lot-automaton"><span class="std std-numref">Fig. 4.2</span></a> shows a JANI automaton modeling the parking lot and ticket machine.
-This automaton has two <em>locations</em>, <em>closed</em> and <em>open</em> corresponding to the gate being closed and open, respectively.
+This automaton has two <em>locations</em>, <em>closed</em> and <em>open</em>, corresponding to the gate being closed and open, respectively.
 These locations are connected by <em>edges</em>.
 Edges are <em>labeled</em>.
 In this case, there are three labels: <em>press</em>, <em>enter</em>, and <em>leave</em>.</p>
@@ -301,7 +301,7 @@ If the gate does not open after pressing the button three times, they will give 
 <img alt="../../_images/driver.drawio.svg" src="../../_images/driver.drawio.svg" /><p class="caption"><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Driver automaton.</span><a class="headerlink" href="#driver-automaton" title="Permalink to this image">¶</a></p>
 </div>
 <p>By synchronizing these automata on their shared labels, <em>press</em> and <em>enter</em>, we obtain an automaton <em>network</em>.
-This network has again a semantics in terms of a transition system with probabilistic behavior and non-deterministic choices.
+This network again has a semantics in terms of a transition system with probabilistic behavior and non-deterministic choices.
 See <a class="reference internal" href="#parking-lot-state-space"><span class="std std-numref">Fig. 4.4</span></a> for the transition system induced by synchronizing the parking lot and driver automata.</p>
 <div class="figure align-center" id="parking-lot-state-space">
 <img alt="../../_images/parking-lot-state-space.drawio.svg" src="../../_images/parking-lot-state-space.drawio.svg" /><p class="caption"><span class="caption-number">Fig. 4.4 </span><span class="caption-text">State space of the parking lot JANI model.</span><a class="headerlink" href="#parking-lot-state-space" title="Permalink to this image">¶</a></p>

@@ -279,7 +279,7 @@ For our example project, we are using Docker and <a class="reference external" h
 The execution environment has to be mostly isolated from the existing system of the user.
 With <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual environments</a>, Python has such isolation builtin.
 In addition, we have a completely isolated Python installation in the development container.</p>
-<p>Poetry will manage a virtual environment for you project.
+<p>Poetry will manage a virtual environment for your project.
 To <strong>set up a virtual environment for the example project</strong>, open a terminal (<em>View → Terminal</em> or <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">`​</span></code>) in VS Code and run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry install
 </pre></div>
@@ -297,7 +297,7 @@ You can now select the recommended interpreter:</p>
 <div class="section" id="dependency-management">
 <h2><span class="section-number">2.1.2. </span>Dependency Management<a class="headerlink" href="#dependency-management" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://www.python.org/dev/peps/pep-0518/">PEP 518</a> partially specifies the format of a <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file.
-This file defines how your project is going to be build and what dependencies in which versions are required.</p>
+This file defines how your project is going to be built and what dependencies in which versions are required.</p>
 <p>The dependencies are specified in the <code class="docutils literal notranslate"><span class="pre">tool.poetry.dependencies</span></code> section.
 For our example:</p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.poetry.dependencies]</span>
