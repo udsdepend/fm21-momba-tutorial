@@ -29,8 +29,8 @@ def analyze(tracks: t.Sequence[t.Tuple[str, model.Track]], resolution: int = 10)
     # We now need to carry out multiple analysis on each track and plot
     # the results into a graph.
     for name, track in tracks:
-        # On the x axis of the plot shows the failure probability and
-        # the y axis of the plot the winning probability
+        # The x axis of the plot shows the failure probability and the
+        # y axis of the plot the winning probability
         x, y = [], []
         print(f"Analyzing track {name!r}...")
         # We are using `click` here to display a nice progress bar.

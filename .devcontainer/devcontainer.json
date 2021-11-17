@@ -9,8 +9,8 @@
         }
     },
     
-    "settings": { 
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
+    "settings": {
+        "python.defaultInterpreterPath": "./.venv/bin/python",
         "python.linting.flake8Enabled": true,
         "python.linting.mypyEnabled": true,
         "python.formatting.provider": "black",
