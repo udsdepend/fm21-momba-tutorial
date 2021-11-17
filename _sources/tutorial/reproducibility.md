@@ -5,7 +5,7 @@ Most prominently, experiments conducted and presented in papers should be *repro
 This is also the reason why most conferences strongly encourage the submission of artifacts with papers.
 
 Setting up a Python project with reproducibility in mind will make your life much easier down the road when it comes to submitting artifacts or onboarding new developers.
-For our example project, we are using [Poetry](https://python-poetry.org/) to manage the project in a way such that reproducibility becomes effortless.
+For our example project, we are using Docker and [Poetry](https://python-poetry.org/) to manage the project in a way such that reproducibility becomes effortless.
 
 
 ## Virtual Environments
@@ -13,16 +13,17 @@ For our example project, we are using [Poetry](https://python-poetry.org/) to ma
 A key to reproducibility is to clearly define an execution environment and prevent user and system-specific circumstances from creeping into it.
 The execution environment has to be mostly isolated from the existing system of the user.
 With [virtual environments](https://docs.python.org/3/tutorial/venv.html), Python has such isolation builtin.
+In addition, we have a completely isolated Python installation in the development container.
+
 Poetry will manage a virtual environment for you project.
-To **set up a virtual environment for the example project**, run
+To **set up a virtual environment for the example project**, open a terminal (*View → Terminal* or ``Ctrl + `​``) in VS Code and run:
 ```bash
 poetry install
 ```
-in the project folder.
 This command will create a new directory `.venv` containing the virtual environment.
 That is, a copy of the Python interpreter and all tools and dependencies necessary for the project.
 
-Assuming you have opened the project workspace (see [*Getting Started*](getting-started) for instructions on how to do that), you activate the virtual environment in VS Code as follows:
+You activate the virtual environment in VS Code as follows:
 Press `F1` to open the command palette and choose *Python: Select Interpreter*.
 Then choose *Entire Workspace*.
 You can now select the recommended interpreter:

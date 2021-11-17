@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2.3. VS Code Workspaces &#8212; FM&#39;21: Tutorial</title>
+    <title>2.3. VS Code &#8212; FM&#39;21: Tutorial</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -126,7 +126,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.3. VS Code Workspaces
+     2.3. VS Code
     </a>
    </li>
   </ul>
@@ -205,7 +205,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tutorial/vscode-workspaces.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tutorial/vscode.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -230,6 +230,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#workspaces">
+   2.3.1. Workspaces
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#development-containers">
+   2.3.2. Development Containers
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -238,20 +256,68 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="vs-code-workspaces">
-<h1><span class="section-number">2.3. </span>VS Code Workspaces<a class="headerlink" href="#vs-code-workspaces" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="vs-code">
+<h1><span class="section-number">2.3. </span>VS Code<a class="headerlink" href="#vs-code" title="Permalink to this headline">¶</a></h1>
 <p>Of course, everyone has their own beloved editor of choice.
 Nevertheless, when working on a project together it might make sense to at least provide some instructions on how to properly configure a common editor for the project.
 Especially when one wants to enforce a certain code style and quality.
 For instance, VS Code can be configured to invoke the previously discussed tools such as linters, type checkers, and auto formatters to ensure a consistent code style and quality across a project with ease.</p>
-<p>With VS Code workspaces, configuring VS Code for a project is straightforward.
-The <code class="docutils literal notranslate"><span class="pre">.code-workspace</span></code> file of the workspace can contain settings as well as recommended extensions.
-This makes bringing new developers up to speed a breeze because it suffices to simply open the workspace and install the necessary extensions as you did before.
-The workspace we are using comes with the following settings:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+<div class="section" id="workspaces">
+<h2><span class="section-number">2.3.1. </span>Workspaces<a class="headerlink" href="#workspaces" title="Permalink to this headline">¶</a></h2>
+<p>Using a <code class="docutils literal notranslate"><span class="pre">.code-workspace</span></code> file you can recommend extensions for a project and also configure VS Code to use them appropriately.
+Now, in our case, we are using a Docker container so the workspace configuration is mostly empty.
+It merely defines a single folder and that the <em>Remote - Containers</em> extension is recommended:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;folders&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;FM Racer&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span>
+    <span class="p">}</span>
+<span class="p">],</span>
+<span class="nt">&quot;extensions&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;recommendations&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;ms-vscode-remote.remote-containers&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="development-containers">
+<h2><span class="section-number">2.3.2. </span>Development Containers<a class="headerlink" href="#development-containers" title="Permalink to this headline">¶</a></h2>
+<p>Using a Docker image as a development environment, as we do in this tutorial, has a number of advantages and is, as you have seen, pretty easy with VS Code.
+First and foremost, a Docker image provides an additional layer of isolation between the host operating system and the development environment.
+You can specify precisely which versions of which tools and dependencies should go into the container and thereby also improve reproducibility.
+In particular, this reduces “but it worked on my machine” moments, and, when you have to ship an artifact, you already have a Docker container with everything in it.
+Furthermore, bringing new developers and colleges up to speed becomes a breeze as they do not have to spend hours configuring their system and installing the necessary tools.
+This is all handled by the Docker image.</p>
+<p>To use a development container with VS Code, you have to create a file <code class="docutils literal notranslate"><span class="pre">.devcontainer/devcontainer.json</span></code> in which you specify a <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> and other parameters of your desired environment:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Python 3&quot;</span><span class="p">,</span>
+
+<span class="nt">&quot;build&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;dockerfile&quot;</span><span class="p">:</span> <span class="s2">&quot;Dockerfile&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;context&quot;</span><span class="p">:</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;VARIANT&quot;</span><span class="p">:</span> <span class="s2">&quot;3.9-bullseye&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">context</span></code> tells Docker that the root project directory should be the build context for the image and that the <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> located in the same directory as <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code> should be used.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> is very short as we are using one of Microsoft’s pre-built images:</p>
+<div class="highlight-Dockerfile notranslate"><div class="highlight"><pre><span></span><span class="k">ARG</span> <span class="nv">VARIANT</span><span class="o">=</span><span class="s2">&quot;3.9-bullseye&quot;</span>
+<span class="k">FROM</span> <span class="s">mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}</span>
+
+<span class="k">RUN</span> pip3 --disable-pip-version-check --no-cache-dir install poetry <span class="se">\</span>
+    <span class="o">&amp;&amp;</span> rm -rf /tmp/pip-tmp
+</pre></div>
+</div>
+<p>Within <code class="docutils literal notranslate"><span class="pre">devcontainer.json</span></code>, you can also configure VS Code:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="nt">&quot;python.defaultInterpreterPath&quot;</span><span class="p">:</span> <span class="s2">&quot;/usr/local/bin/python&quot;</span><span class="p">,</span>
     <span class="nt">&quot;python.linting.flake8Enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nt">&quot;python.linting.mypyEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nt">&quot;python.formatting.provider&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;python.terminal.activateEnvironment&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+
     <span class="nt">&quot;[python]&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;editor.rulers&quot;</span><span class="p">:</span> <span class="p">[</span>
             <span class="mi">99</span>
@@ -267,30 +333,21 @@ For some, this may be annoying at first.
 However, it really helps ensuring a consistent code style and quality across a project.
 As argued before, this should be a priority, especially in academia.
 After a while, you will adapt to the enforced rules and they will become second nature to you.</p>
-<p>In case of our example project, the recommended extensions are defined by:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;extensions&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;recommendations&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;bungcip.better-toml&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ms-python.vscode-pylance&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ms-python.python&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;streetsidesoftware.code-spell-checker&quot;</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Within a workspace there can also be multiple <em>folders</em>.
-In our case there is just one:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;folders&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;FM Racer&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span>
-    <span class="p">}</span>
+<p>In addition, you can specify extensions which should be installed:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;extensions&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;streetsidesoftware.code-spell-checker&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ms-python.vscode-pylance&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ms-python.python&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;bungcip.better-toml&quot;</span><span class="p">,</span>
 <span class="p">],</span>
 </pre></div>
 </div>
-<p>So, now you know how VS Code workspaces work and how you might use them to ensure consistency across a project and to bring new developers up to speed quickly.
+<p>Here we install four extensions for spell checking, Python support, and <a class="reference external" href="https://toml.io/en/">TOML</a> support.
+TOML is the file format of the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> file used to configure a Python project.</p>
+<p>So, now you know how Development Containers work and how you might use them to ensure consistency across a project and to bring new developers up to speed quickly.
 When we will begin working with actual source code, you also know why VS Code may suddenly reformat your code or throw various warning towards you.
 In case this annoys you, you now also know how to turn it off. 😉</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

@@ -125,8 +125,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../vscode-workspaces/">
-     2.3. VS Code Workspaces
+    <a class="reference internal" href="../vscode/">
+     2.3. VS Code
     </a>
    </li>
   </ul>
@@ -272,21 +272,21 @@
 Most prominently, experiments conducted and presented in papers should be <em>reproducible</em> by other researchers.
 This is also the reason why most conferences strongly encourage the submission of artifacts with papers.</p>
 <p>Setting up a Python project with reproducibility in mind will make your life much easier down the road when it comes to submitting artifacts or onboarding new developers.
-For our example project, we are using <a class="reference external" href="https://python-poetry.org/">Poetry</a> to manage the project in a way such that reproducibility becomes effortless.</p>
+For our example project, we are using Docker and <a class="reference external" href="https://python-poetry.org/">Poetry</a> to manage the project in a way such that reproducibility becomes effortless.</p>
 <div class="section" id="virtual-environments">
 <h2><span class="section-number">2.1.1. </span>Virtual Environments<a class="headerlink" href="#virtual-environments" title="Permalink to this headline">¶</a></h2>
 <p>A key to reproducibility is to clearly define an execution environment and prevent user and system-specific circumstances from creeping into it.
 The execution environment has to be mostly isolated from the existing system of the user.
 With <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual environments</a>, Python has such isolation builtin.
-Poetry will manage a virtual environment for you project.
-To <strong>set up a virtual environment for the example project</strong>, run</p>
+In addition, we have a completely isolated Python installation in the development container.</p>
+<p>Poetry will manage a virtual environment for you project.
+To <strong>set up a virtual environment for the example project</strong>, open a terminal (<em>View → Terminal</em> or <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">`​</span></code>) in VS Code and run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry install
 </pre></div>
 </div>
-<p>in the project folder.
-This command will create a new directory <code class="docutils literal notranslate"><span class="pre">.venv</span></code> containing the virtual environment.
+<p>This command will create a new directory <code class="docutils literal notranslate"><span class="pre">.venv</span></code> containing the virtual environment.
 That is, a copy of the Python interpreter and all tools and dependencies necessary for the project.</p>
-<p>Assuming you have opened the project workspace (see <a class="reference internal" href="../getting-started/"><span class="doc std std-doc"><em>Getting Started</em></span></a> for instructions on how to do that), you activate the virtual environment in VS Code as follows:
+<p>You activate the virtual environment in VS Code as follows:
 Press <code class="docutils literal notranslate"><span class="pre">F1</span></code> to open the command palette and choose <em>Python: Select Interpreter</em>.
 Then choose <em>Entire Workspace</em>.
 You can now select the recommended interpreter:</p>
