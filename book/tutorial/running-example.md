@@ -1,7 +1,7 @@
 # Running Example
 
-As a running example, we will be using a simple [jump 'n' run](https://en.wikipedia.org/wiki/Platform_game) game where the player has to avoid obstacles while moving forward at a constant speed.
-To avoid obstacles the player can move left or right.
+As a running example, we will be using a simple [jump 'n' run](https://en.wikipedia.org/wiki/Platform_game) game where the player has to avoid obstacles while moving forward (from left to right) at a constant speed.
+To avoid obstacles, the player can move up or down.
 The goal is to reach the end of the *track* without crashing into an obstacle.
 
 With the help of a little ASCII art, a track may be represented as follows:

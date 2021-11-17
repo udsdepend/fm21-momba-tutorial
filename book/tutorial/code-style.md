@@ -18,15 +18,15 @@ In both cases, the bad style occludes the relevant details and induces cognitive
 
 Fortunately, for many programming languages there are established community standards and even tools which will help you adhere to these standards.
 Python is no exception here.
-With [Black](https://github.com/psf/black) the [Python Software Foundation](https://www.python.org/psf/) provides a tool to automatically format your code according to a well-established standard.
-With [Flake8](https://flake8.pycqa.org/en/latest/) a linter is available which will help you catch bugs and in general produce higher quality code following the official [PEP 8 – Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/).
+With [Black](https://github.com/psf/black), the [Python Software Foundation](https://www.python.org/psf/) provides a tool to automatically format your code according to a well-established standard.
+With [Flake8](https://flake8.pycqa.org/en/latest/), a linter is available which will help you catch bugs and in general produce higher quality code following the official [PEP 8 – Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/).
 Like you would not write a paper without a spell checker, you should not write Python programs without using those (or similar) tools.
 
 Since [version 3.5](https://docs.python.org/3.5/whatsnew/3.5.html#whatsnew-pep-484), Python officially supports *gradual static typing*.
 Despite being optional, using static types can reduce bugs in your code and also serve as a documentation of interfaces.
 There are, however, some tradeoffs to static types and they may not be suited for all use cases as they only work for a subset of Python.
 Momba is almost fully statically typed.
-The example project comes with the type checker [MyPy](http://mypy-lang.org/) enabled, however, it is configured such that you do not have to provide types for the code you will be writing.
+The example project comes with the type checker [MyPy](http://mypy-lang.org/) enabled; however, it is configured such that you do not have to provide types for the code you will be writing.
 
 Note that by using the provided VS Code workspace, VS Code is already configured to highlight violations of the Python style guidelines and format your code automatically.
 In the next section, we will have a look how this is done and how you can leverage VS Code workspaces for your projects.

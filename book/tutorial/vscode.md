@@ -1,7 +1,7 @@
 # VS Code
 
 Of course, everyone has their own beloved editor of choice.
-Nevertheless, when working on a project together it might make sense to at least provide some instructions on how to properly configure a common editor for the project.
+Nevertheless, when working on a project together, it might make sense to at least provide some instructions on how to properly configure a common editor for the project.
 Especially when one wants to enforce a certain code style and quality.
 For instance, VS Code can be configured to invoke the previously discussed tools such as linters, type checkers, and auto formatters to ensure a consistent code style and quality across a project with ease.
 
