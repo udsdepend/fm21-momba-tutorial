@@ -11,14 +11,16 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
 ## Windows
 
 1. To install Docker, use the [Docker Desktop](https://www.docker.com/products/docker-desktop) installer without changing any settings.
-    
-    To **pull the Docker image required for the tutorial** run in a PowerShell:
+    This may require restarting your computer.
+    Please make sure to have the windows features [*Windows Subsystem for Linux* and *Virtual Machine Platform* (for Windows Home) or *Hyper-V* (for Windows Pro) enabled](https://docs.docker.com/desktop/windows/troubleshoot/#virtualization).
+    In case you run into any problems checkout the [Docker Troubleshooting Guide](https://docs.docker.com/desktop/windows/troubleshoot/) or send us an email. 
+2. To **pull the Docker image required for the tutorial** run in a PowerShell:
     ```
     docker pull mcr.microsoft.com/vscode/devcontainers/python:0-3.9-bullseye
     ```
     This command will download the required image so that it is already present on the day of the tutorial.
     In case Docker is not properly set up, this command will fail.
-2. To install VS Code, use the [official installer](https://code.visualstudio.com/#alt-downloads).
+3. To install VS Code, use the [official installer](https://code.visualstudio.com/#alt-downloads).
 
 
 ## Ubuntu
@@ -33,13 +35,13 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
     This will also add a group `docker` and add the current user to it (required to execute `docker`).
     You may need to logout and login again for the changes to take effect.
 
-    To **pull the Docker image required for the tutorial** run:
+2. To **pull the Docker image required for the tutorial** run:
     ```
     docker pull mcr.microsoft.com/vscode/devcontainers/python:0-3.9-bullseye
     ```
     This command will download the required image so that it is already present on the day of the tutorial.
     In case Docker is not properly set up, this command will fail.
-2. To install VS Code from the official sources run:
+3. To install VS Code from the official sources run:
     ```
     wget -O /tmp/vscode.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
     sudo apt-get install -y /tmp/vscode.deb
