@@ -7,6 +7,10 @@ To follow along, you have to install [Docker](https://docker.io) and [VS Code](
 The following steps have been successfully tested on Windows 10 and Ubuntu 21.10, however, they should analogously apply to your favorite Linux distribution or macOS.
 In case you have any questions, join our <a href="https://gitter.im/koehlma/momba?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/koehlma/momba.svg"></a> or send us an email.
 
+We will be using VS Code's *development container* feature.
+This works as follows: VS Code starts and connects to a Docker container containing all the tools for the tutorial.
+We will then work in this container.
+
 
 ## Windows
 

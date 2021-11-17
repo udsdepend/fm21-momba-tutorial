@@ -263,6 +263,9 @@
 To follow along, you have to install <a class="reference external" href="https://docker.io">Docker</a> and <a class="reference external" href="https://code.visualstudio.com">VS Code</a>.
 The following steps have been successfully tested on Windows 10 and Ubuntu 21.10, however, they should analogously apply to your favorite Linux distribution or macOS.
 In case you have any questions, join our <a href="https://gitter.im/koehlma/momba?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge"><img alt="Gitter" src="https://badges.gitter.im/koehlma/momba.svg"></a> or send us an email.</p>
+<p>We will be using VS Code’s <em>development container</em> feature.
+This works as follows: VS Code starts and connects to a Docker container containing all the tools for the tutorial.
+We will then work in this container.</p>
 <div class="section" id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
 <ol>
@@ -270,7 +273,7 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
 This may require restarting your computer.
 Please make sure to have the windows features <a class="reference external" href="https://docs.docker.com/desktop/windows/troubleshoot/#virtualization"><em>Windows Subsystem for Linux</em> and <em>Virtual Machine Platform</em> (for Windows Home) or <em>Hyper-V</em> (for Windows Pro) enabled</a>.</p>
 <p>In case the following error message appears</p>
-<a class="reference internal image-reference" href="images/windows-docker-wsl2-incomplete.png" id="vscode-open-workspace"><img alt="images/windows-docker-wsl2-incomplete.png" class="align-center" id="vscode-open-workspace" src="images/windows-docker-wsl2-incomplete.png" /></a>
+<a class="reference internal image-reference" href="../_images/windows-docker-wsl2-incomplete.png" id="vscode-open-workspace"><img alt="../_images/windows-docker-wsl2-incomplete.png" class="align-center" id="vscode-open-workspace" src="../_images/windows-docker-wsl2-incomplete.png" style="width: 517.0px; height: 190.0px;" /></a>
 <p>you have to download and install the WSL2 Linux Kernel either by clicking on the link and following the instructions or by directly downloading it from <a class="reference external" href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">here</a>.</p>
 <p>In case you run into any other problems checkout the <a class="reference external" href="https://docs.docker.com/desktop/windows/troubleshoot/">Docker Troubleshooting Guide</a> or send us an email.</p>
 </li>
