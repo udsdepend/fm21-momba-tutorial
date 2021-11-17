@@ -65,6 +65,7 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
     # modeling context `ctx`. You may find the following resources helpful:
     # - https://momba.dev/reference/model/context/#context
     # - https://momba.dev/reference/model/context/#scope
+    # - https://momba.dev/reference/model/types/#momba.model.types.INT
     ...
 
     # TODO: In addition to those two variables declare two boolean variables `has_won`
@@ -73,16 +74,16 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
 
     # TODO: The player needs to be able to do something. To this end, we have to
     # declare the *action types* it can perform. An action type is a label on a
-    # transition of the constructed model. Declare three action types `left` (for
-    # moving left), `right` (for moving right), and `stay` (for not moving).
-    # Action types are declared with the method `create_action_type` on the
-    # modeling context `ctx`. Each of the declared action types which are
+    # transition of the constructed model. Declare three action types `up` (for
+    # moving up), `down` (for moving down), and `stay` (for not moving in y
+    # direction). Action types are declared with the method `create_action_type`
+    # on the modeling context `ctx`. Each of the declared action types which are
     # returned by `create_action_type` should be assigned to a respective
-    # variable `left_action`, `right_action`, and `stay_action` such that we can
+    # variable `up_action`, `down_action`, and `stay_action` such that we can
     # use them in the following. You may find the following resources helpful:
     # - https://momba.dev/reference/model/context/#context
-    left_action = ...
-    right_action = ...
+    up_action = ...
+    down_action = ...
     stay_action = ...
 
     # TODO: The automaton network will consist of a single automaton which
@@ -172,7 +173,7 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
     # action types to the effect they should have on the y position of the
     # player. Note that this assumes that you have named the variables in
     # the previous step as described.
-    moves = {left_action: -1, right_action: 1, stay_action: 0}
+    moves = {up_action: -1, down_action: 1, stay_action: 0}
 
     # We now iterate over the items in the dictionary and create an edge
     # corresponding to the respective action type.
@@ -220,7 +221,7 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         # function `model.ensure_expr`.
         fail_destination = ...
 
-        # Now, it reamins to create the edge for the respective action type.
+        # Now, it remains to create the edge for the respective action type.
         automaton.create_edge(
             # TODO: Add the arguments for the source location `location`, the
             # guard of the edge which should be `can_move` such that the edge
@@ -252,7 +253,7 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
     # with each other. This is done by using the function `create_link` which
     # takes a mapping from instances to action (patterns) and an optional
     # result action. Intuitively, if the automaton performs a certain action
-    # such as *left*, *right*, or *stay*, then the final transition system
+    # such as *up*, *down*, or *stay*, then the final transition system
     # for the network should perform the same action. Hence, the result action
     # and the action with which the just created instance participates in
     # a synchronization are identical.

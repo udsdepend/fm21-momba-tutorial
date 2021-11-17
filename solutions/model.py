@@ -66,8 +66,8 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         "has_crashed", typ=model.types.BOOL, initial_value=False
     )
 
-    left_action = ctx.create_action_type("left")
-    right_action = ctx.create_action_type("right")
+    up_action = ctx.create_action_type("up")
+    down_action = ctx.create_action_type("down")
     stay_action = ctx.create_action_type("stay")
 
     automaton = ctx.create_automaton(name="Environment")
@@ -97,7 +97,7 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         )
         return model.expressions.logic_or(out_of_bounds, on_obstacle)
 
-    moves = {left_action: -1, right_action: 1, stay_action: 0}
+    moves = {up_action: -1, down_action: 1, stay_action: 0}
 
     for action_type, delta in moves.items():
         new_pos_x = expr("pos_x + 1")
@@ -135,10 +135,11 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
             destinations=[success_destination, fail_destination],
         )
 
-    instance = automaton.create_instance()
-
     network = ctx.create_network()
+
+    instance = automaton.create_instance()
     network.add_instance(instance)
+
     for action_type in moves.keys():
         network.create_link(
             {instance: action_type.create_pattern()},

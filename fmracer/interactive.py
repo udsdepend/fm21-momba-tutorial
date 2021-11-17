@@ -111,9 +111,9 @@ def game(track: model.Track, screen: Screen, *, fail_probability: float = 0.4):
 
         # Select a transition based on the input of the user and its label.
         if event.key_code == Screen.KEY_UP:
-            transition = transitions["left"]
+            transition = transitions["up"]
         elif event.key_code == Screen.KEY_DOWN:
-            transition = transitions["right"]
+            transition = transitions["down"]
         else:
             transition = transitions["stay"]
 
