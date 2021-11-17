@@ -253,10 +253,14 @@ To open the workspace run:</p>
 </pre></div>
 </div>
 <p>Alternatively, you can also open the workspace from within VS Code: To this end, open the <em>command palette</em> by pressing <code class="docutils literal notranslate"><span class="pre">F1</span></code>, type <em>File: Open Workspace from File</em>, and hit the enter key:</p>
-<img alt="../../_images/vscode-open-workspace.png" class="align-center" id="vscode-open-workspace" src="../../_images/vscode-open-workspace.png" />
+<a class="reference internal image-reference" href="../../_images/vscode-open-workspace.png" id="vscode-open-workspace"><img alt="../../_images/vscode-open-workspace.png" class="align-center" id="vscode-open-workspace" src="../../_images/vscode-open-workspace.png" style="width: 618.4000000000001px; height: 94.4px;" /></a>
 <p>Then, choose the <code class="docutils literal notranslate"><span class="pre">workspace.code-workspace</span></code> file to open the workspace.</p>
+<p>VS Code will now probably ask you whether you trust the authors of the workspace:</p>
+<a class="reference internal image-reference" href="../../_images/vscode-workspace-trust.png" id="vscode-workspace-trust"><img alt="../../_images/vscode-workspace-trust.png" class="align-center" id="vscode-workspace-trust" src="../../_images/vscode-workspace-trust.png" style="width: 616.0px; height: 331.79999999999995px;" /></a>
+<p>This is a security precaution because the workspace may configure VS Code to execute arbitrary code on your system.
+Please trust the workspace by clicking <em>Yes, I trust the authors</em>.</p>
 <p>After opening the workspace, VS Code should ask you whether you want to install the <em>recommended extensions</em>:</p>
-<img alt="../../_images/vscode-install-extensions.png" class="align-center" id="id1" src="../../_images/vscode-install-extensions.png" />
+<a class="reference internal image-reference" href="../../_images/vscode-install-extensions.png" id="id1"><img alt="../../_images/vscode-install-extensions.png" class="align-center" id="id1" src="../../_images/vscode-install-extensions.png" style="width: 536.8000000000001px; height: 128.0px;" /></a>
 <p>The workspace comes with one recommended extension: <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers"><em>Remote - Containers</em></a>.
 This extension allows using a Docker image to specify a reproducible and versioned development environment.
 More about that later.
@@ -266,6 +270,9 @@ To view the recommended extensions of the workspace and check whether they are i
 <p>After installing the <em>Remote - Containers</em> extension you have to reopen the workspace within a <em>development container</em>.
 To this end, open the command palette by pressing <code class="docutils literal notranslate"><span class="pre">F1</span></code> and then choose <em>Remote-Containers: Reopen in Container</em>.
 This will reload the window, create a Docker container with Python and all relevant tools installed, and then opens the workspace in this container.</p>
+<p>After opening the container, VS Code will install some additional extensions into the container.
+After installing these extensions, it may prompt you to reload the window.
+Please do so when prompted.</p>
 <p>Congratulations, you are now fully prepared for the tutorial. 🎉</p>
 </div>
 
