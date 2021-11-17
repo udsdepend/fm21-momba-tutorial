@@ -13,7 +13,16 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
 1. To install Docker, use the [Docker Desktop](https://www.docker.com/products/docker-desktop) installer without changing any settings.
     This may require restarting your computer.
     Please make sure to have the windows features [*Windows Subsystem for Linux* and *Virtual Machine Platform* (for Windows Home) or *Hyper-V* (for Windows Pro) enabled](https://docs.docker.com/desktop/windows/troubleshoot/#virtualization).
-    In case you run into any problems checkout the [Docker Troubleshooting Guide](https://docs.docker.com/desktop/windows/troubleshoot/) or send us an email. 
+    
+    In case the following error message appears
+    ```{image} ./images/windows-docker-wsl2-incomplete.png
+    :name: vscode-open-workspace
+    :scale: 50%
+    :align: center
+    ```
+    you have to download and install the WSL2 Linux Kernel either by clicking on the link and following the instructions or by directly downloading it from [here](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi).
+        
+    In case you run into any other problems checkout the [Docker Troubleshooting Guide](https://docs.docker.com/desktop/windows/troubleshoot/) or send us an email.
 2. To **pull the Docker image required for the tutorial** run in a PowerShell:
     ```
     docker pull mcr.microsoft.com/vscode/devcontainers/python:0-3.9-bullseye

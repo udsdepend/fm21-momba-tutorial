@@ -268,8 +268,12 @@ In case you have any questions, join our <a href="https://gitter.im/koehlma/momb
 <ol>
 <li><p>To install Docker, use the <a class="reference external" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a> installer without changing any settings.
 This may require restarting your computer.
-Please make sure to have the windows features <a class="reference external" href="https://docs.docker.com/desktop/windows/troubleshoot/#virtualization"><em>Windows Subsystem for Linux</em> and <em>Virtual Machine Platform</em> (for Windows Home) or <em>Hyper-V</em> (for Windows Pro) enabled</a>.
-In case you run into any problems checkout the <a class="reference external" href="https://docs.docker.com/desktop/windows/troubleshoot/">Docker Troubleshooting Guide</a> or send us an email.</p></li>
+Please make sure to have the windows features <a class="reference external" href="https://docs.docker.com/desktop/windows/troubleshoot/#virtualization"><em>Windows Subsystem for Linux</em> and <em>Virtual Machine Platform</em> (for Windows Home) or <em>Hyper-V</em> (for Windows Pro) enabled</a>.</p>
+<p>In case the following error message appears</p>
+<a class="reference internal image-reference" href="images/windows-docker-wsl2-incomplete.png" id="vscode-open-workspace"><img alt="images/windows-docker-wsl2-incomplete.png" class="align-center" id="vscode-open-workspace" src="images/windows-docker-wsl2-incomplete.png" /></a>
+<p>you have to download and install the WSL2 Linux Kernel either by clicking on the link and following the instructions or by directly downloading it from <a class="reference external" href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">here</a>.</p>
+<p>In case you run into any other problems checkout the <a class="reference external" href="https://docs.docker.com/desktop/windows/troubleshoot/">Docker Troubleshooting Guide</a> or send us an email.</p>
+</li>
 <li><p>To <strong>pull the Docker image required for the tutorial</strong> run in a PowerShell:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">pull</span> <span class="n">mcr</span><span class="o">.</span><span class="n">microsoft</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vscode</span><span class="o">/</span><span class="n">devcontainers</span><span class="o">/</span><span class="n">python</span><span class="p">:</span><span class="mi">0</span><span class="o">-</span><span class="mf">3.9</span><span class="o">-</span><span class="n">bullseye</span>
 </pre></div>
