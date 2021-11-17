@@ -271,8 +271,14 @@ To view the recommended extensions of the workspace and check whether they are i
 To this end, open the command palette by pressing <code class="docutils literal notranslate"><span class="pre">F1</span></code> and then choose <em>Remote-Containers: Reopen in Container</em>.
 This will reload the window, create a Docker container with Python and all relevant tools installed, and then opens the workspace in this container.</p>
 <p>After opening the container, VS Code will install some additional extensions into the container.
-After installing these extensions, it may prompt you to reload the window.
-Please do so when prompted.</p>
+After installing these extensions, it may prompt you to reload the window:</p>
+<a class="reference internal image-reference" href="../../_images/pylance-reload-prompt.png" id="pylance-reload-prompt"><img alt="../../_images/pylance-reload-prompt.png" class="align-center" id="pylance-reload-prompt" src="../../_images/pylance-reload-prompt.png" style="width: 532.1999999999999px; height: 124.19999999999999px;" /></a>
+<p>Please hit <em>Yes</em> when prompted to reload the window.</p>
+<p>On Windows, reloading may result in the following error:</p>
+<a class="reference internal image-reference" href="../../_images/windows-reload-error.png" id="windows-reload-error"><img alt="../../_images/windows-reload-error.png" class="align-center" id="windows-reload-error" src="../../_images/windows-reload-error.png" style="width: 393.59999999999997px; height: 103.2px;" /></a>
+<p>This seems to be due to some kind of race condition in VS Code and Docker Desktop for Windows.
+Just wait a few seconds and then hit <em>Retry</em>.
+Afterwards, it should work.</p>
 <p>Congratulations, you are now fully prepared for the tutorial. 🎉</p>
 </div>
 

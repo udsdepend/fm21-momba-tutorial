@@ -56,7 +56,22 @@ To this end, open the command palette by pressing `F1` and then choose *Remote-C
 This will reload the window, create a Docker container with Python and all relevant tools installed, and then opens the workspace in this container.
 
 After opening the container, VS Code will install some additional extensions into the container.
-After installing these extensions, it may prompt you to reload the window.
-Please do so when prompted.
+After installing these extensions, it may prompt you to reload the window:
+```{image} ./images/pylance-reload-prompt.png
+:name: pylance-reload-prompt
+:scale: 60%
+:align: center
+```
+Please hit *Yes* when prompted to reload the window.
+
+On Windows, reloading may result in the following error:
+```{image} ./images/windows-reload-error.png
+:name: windows-reload-error
+:scale: 60%
+:align: center
+```
+This seems to be due to some kind of race condition in VS Code and Docker Desktop for Windows.
+Just wait a few seconds and then hit *Retry*.
+Afterwards, it should work.
 
 Congratulations, you are now fully prepared for the tutorial. 🎉
