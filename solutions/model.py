@@ -120,7 +120,7 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
 
         fail_destination = model.create_destination(
             location,
-            probability=model.ensure_expr(fail_probability),
+            probability=expr("$p", p=fail_probability),
             assignments={
                 "pos_x": new_pos_x,
                 "has_won": has_won(new_pos_x),

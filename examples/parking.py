@@ -5,6 +5,9 @@ from momba.moml import expr, prop
 from momba.tools import modest
 
 
+FAIL_PROBABILITY = 0.1
+
+
 ctx = model.Context(model.ModelType.MDP)
 
 ctx.global_scope.declare_variable("goal", model.types.BOOL, initial_value=False)
@@ -26,10 +29,12 @@ open_loc = parking_lot_aut.create_location("open")
 parking_lot_aut.create_edge(
     closed_loc,
     destinations=[
-        model.create_destination(closed_loc, probability=model.ensure_expr(0.1)),
+        model.create_destination(
+            closed_loc, probability=expr("$p", p=FAIL_PROBABILITY)
+        ),
         model.create_destination(
             open_loc,
-            probability=model.ensure_expr(0.9),
+            probability=expr("1 - $p", p=FAIL_PROBABILITY),
             assignments={"counter": expr("counter + 1")},
         ),
     ],
@@ -87,9 +92,7 @@ parked_loc = driver_aut.create_location("parked")
 driver_aut.create_edge(
     press_loc,
     destinations=[
-        model.create_destination(
-            parked_loc, assignments={"goal": model.ensure_expr(True)}
-        )
+        model.create_destination(parked_loc, assignments={"goal": expr("true")})
     ],
     action_pattern=enter,
 )

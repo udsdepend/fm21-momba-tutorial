@@ -216,9 +216,8 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
         # TODO: Construct a destination for when the action fails. In this
         # case, the x coordinate should be updated to `new_pos_x`. However,
         # the y coordinate should stay as it is. Note that the probability
-        # passed to the `create_destination` function has to be an expression.
-        # To transform a Python value into an expression you can use the
-        # function `model.ensure_expr`.
+        # passed to the `create_destination` function has to be an expression,
+        # thus, you have to use the function `expr` again.
         fail_destination = ...
 
         # Now, it remains to create the edge for the respective action type.
@@ -228,8 +227,9 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
             # is enabled if and only if the player can move, as well as the
             # earlier defined destinations for this edge.
             ...,
-            # Momba supports a non-standard JANI feature for value passing. This
-            # is why we have to create an *action pattern* here:
+            # Momba supports value passing, a non-standard JANI feature, not
+            # used here. Anyway, this is why we have to create an *action pattern*
+            # without any parameters:
             action_pattern=action_type.create_pattern(),
         )
 
