@@ -25,11 +25,15 @@ def game(track: model.Track, screen: Screen, *, fail_probability: float = 0.4):
             for x in range(track.width):
                 cell = model.Cell(x, y)
                 if cell in track.obstacles:
-                    screen.print_at("█", x, y, Screen.COLOUR_RED)
+                    screen.print_at(
+                        "█", x, y, Screen.COLOUR_RED, bg=Screen.COLOUR_WHITE
+                    )
                 elif cell == player:
-                    screen.print_at("x", x, y, Screen.COLOUR_BLUE)
+                    screen.print_at(
+                        "x", x, y, Screen.COLOUR_BLUE, bg=Screen.COLOUR_WHITE
+                    )
                 else:
-                    screen.print_at(" ", x, y)
+                    screen.print_at(" ", x, y, bg=Screen.COLOUR_WHITE)
         screen.refresh()
 
         if not state.transitions:
