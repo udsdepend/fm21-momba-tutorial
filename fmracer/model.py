@@ -120,7 +120,7 @@ def construct_model(track: Track, *, fail_probability: float = 0.4) -> model.Net
     # guard for the edges of the automation. These edges should be
     # enabled only if the player can actually still move.
     #
-    # The grammer for the expressions is straightforward. A reference can
+    # The grammar for the expressions is straightforward. A reference can
     # be found here: https://momba.dev/incubator/moml/grammar/. The syntax
     # for expressions is defined by the `<expression>` nonterminal.
 
