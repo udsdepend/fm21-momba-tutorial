@@ -4,7 +4,6 @@ import typing as t
 
 import click
 
-import matplotlib.pyplot as plt
 
 from momba.moml import prop
 from momba.tools import modest
@@ -16,6 +15,8 @@ PROPERTIES = {"goal": prop("min({ Pmax(F(has_won)) | initial })")}
 
 
 def analyze(tracks: t.Sequence[t.Tuple[str, model.Track]], resolution: int = 10):
+    import matplotlib.pyplot as plt
+
     checker = modest.get_checker(accept_license=True)
 
     for name, track in tracks:
